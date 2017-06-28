@@ -1,0 +1,305 @@
+repositories:
+  actionlib:
+    type: git
+    url: https://github.com/ros-gbp/actionlib-release.git
+    version: 1243625745f4d0ced29cbf02818e279d1c176428
+  angles:
+    type: git
+    url: https://github.com/ros-gbp/geometry_angles_utils-release.git
+    version: 6e1dc72922c0b8c07bf4a9b67e81d36d407d2f2b
+  catkin:
+    type: git
+    url: https://github.com/ros-gbp/catkin-release.git
+    version: adb4a602096106ce97f9ca0bdf680dd2fa2e4555
+  class_loader:
+    type: git
+    url: https://github.com/ros-gbp/class_loader-release.git
+    version: 73df32aa21768625cbecc1a1e11ccc81142dd0ee
+  cmake_modules:
+    type: git
+    url: https://github.com/ros-gbp/cmake_modules-release.git
+    version: 75f24c23e3895bee084d760d5050af60d11aa0ab
+  common_msgs/actionlib_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 41ff39e3c3950f3bbb95ea932507aa8fa9868588
+  common_msgs/diagnostic_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: ec8e0153e864432e9ee060ec8ca029aa135cae87
+  common_msgs/geometry_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 78b06a7c98f6e50924dfc17f6db6d23442e1200c
+  common_msgs/nav_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 84d4e89f428454b763d62d0853388566738566ad
+  common_msgs/sensor_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 0f04150826ff8f0dc2acdf47fad44557035857cf
+  common_msgs/trajectory_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 12d87e83e5961f665c09ed710444bbcbdc1464a4
+  diagnostics/diagnostic_updater:
+    type: git
+    url: https://github.com/ros-gbp/diagnostics-release.git
+    version: 5c9696cd9c9d3e003dd70c71fb756489e5f129ab
+  gencpp:
+    type: git
+    url: https://github.com/ros-gbp/gencpp-release.git
+    version: 4c1a9a1857bd2ae2670a2775d77e173ec47ae152
+  geneus:
+    type: git
+    url: https://github.com/tork-a/geneus-release.git
+    version: cc2b229a6bfd430b0a8c0b3a42b8566b19c748b1
+  genlisp:
+    type: git
+    url: https://github.com/ros-gbp/genlisp-release.git
+    version: f12a05e749e3b65d02523d43d541eeaaa1010dea
+  genmsg:
+    type: git
+    url: https://github.com/ros-gbp/genmsg-release.git
+    version: 12f42ddea5516e23267bd12fe7b65402bfeb006b
+  gennodejs:
+    type: git
+    url: https://github.com/RethinkRobotics-release/gennodejs-release.git
+    version: 82a06c269d34a3b00f6c0541950a01a5a063ea7f
+  genpy:
+    type: git
+    url: https://github.com/ros-gbp/genpy-release.git
+    version: 9025da5d2bb176b95798b7c50c9efd264435456e
+  geometry/tf:
+    type: git
+    url: https://github.com/ros-gbp/geometry-release.git
+    version: de4169fa31159a61b9dc1198082accf2d77b5fa2
+  geometry2/tf2:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: e8dc6f3ffde6d517e7c80b3fc6ce4a43aca1e2eb
+  geometry2/tf2_geometry_msgs:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: 03562551a70209409883b6a7ab9e40fbe91c3e2d
+  geometry2/tf2_kdl:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: 517fbd95aa7baa5c7d2ee8823750c84b0e39f7f2
+  geometry2/tf2_msgs:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: 097bea54e36a9dc94e7eb390cb4dc1035324540a
+  geometry2/tf2_py:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: cb13e12ab4b8abe0e6366dace69f3c817718c86d
+  geometry2/tf2_ros:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: bca3a9765e97aa38f9e8f1ca156abda6453eae62
+  image_common/image_transport:
+    type: git
+    url: https://github.com/ros-gbp/image_common-release.git
+    version: bcb586048e6ecbf8dfca575b8cda0202c2ebe0c7
+  kdl_parser/kdl_parser:
+    type: git
+    url: https://github.com/ros-gbp/kdl_parser-release.git
+    version: 7dc07e5e57af33fc2ddd094b877a18508417a3ff
+  message_generation:
+    type: git
+    url: https://github.com/ros-gbp/message_generation-release.git
+    version: c820f191d66d75412c171e36fdc607317d3ce1df
+  message_runtime:
+    type: git
+    url: https://github.com/ros-gbp/message_runtime-release.git
+    version: 3a1adf17046b8d0f7910b708224a08b79d971053
+  naoqi_bridge_msgs:
+    type: git
+    url: https://github.com/ros-naoqi/naoqi_bridge_msgs-release.git
+    version: e25d4dc6b0e1cb5406be183cd9c486086a41dc82
+  naoqi_driver:
+    type: git
+    url: git@github.com:esteve/naoqi_driver.git
+    version: bz2-cmake
+  naoqi_libqi:
+    type: git
+    url: git@github.com:esteve/libqi-release.git
+    version: boost-cmake
+  naoqi_libqicore:
+    type: git
+    url: git@github.com:esteve/libqicore-release.git
+    version: boost-cmake
+  opencv3:
+    type: git
+    url: https://github.com/ros-gbp/opencv3-release.git
+    version: f9a239e57969e43f35b1e29cc0fc7b7423a09200
+  orocos_kinematics_dynamics/orocos_kdl:
+    type: git
+    url: https://github.com/smits/orocos-kdl-release.git
+    version: 07bd9074f00082c7f39d7debdb807750ecf630a3
+  orocos_kinematics_dynamics/python_orocos_kdl:
+    type: git
+    url: https://github.com/smits/orocos-kdl-release.git
+    version: 56c5c0622c15b672f6523ac50c2e4d697893d4a7
+  pluginlib:
+    type: git
+    url: https://github.com/ros-gbp/pluginlib-release.git
+    version: 7e1e9c6eb6a9040a5310e02cb136035917e4f80b
+  robot_model/urdf:
+    type: git
+    url: git@github.com:esteve/robot_model.git
+    version: missing-dependencies
+  robot_model/urdf_parser_plugin:
+    type: git
+    url: https://github.com/ros-gbp/robot_model-release.git
+    version: 69e01865af87626891a7786eca11024366c436ea
+  robot_state_publisher:
+    type: git
+    url: https://github.com/ros-gbp/robot_state_publisher-release.git
+    version: 66fc44c4a335b28c104217c59ea7a9fa745f9e56
+  ros/rosbuild:
+    type: git
+    url: https://github.com/ros-gbp/ros-release.git
+    version: c58a3fd5c52c24b5ca12202d8d1f5fa15614555c
+  ros/rosclean:
+    type: git
+    url: https://github.com/ros-gbp/ros-release.git
+    version: e373d37f151dd5e8ac2dfd6e3a9b2328525be9f9
+  ros/roslang:
+    type: git
+    url: https://github.com/ros-gbp/ros-release.git
+    version: 4765c9de063fb0f589d09b6b5990de4b6c52d49b
+  ros/roslib:
+    type: git
+    url: https://github.com/ros-gbp/ros-release.git
+    version: 034aafc4d75660eef0ce353514614baf5e7f13b5
+  ros/rosunit:
+    type: git
+    url: https://github.com/ros-gbp/ros-release.git
+    version: ee71bd86df4346721d60af809948cf35a6003600
+  ros_comm/message_filters:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 12c3396d5deff5d791e647a064865cc96cccea79
+  ros_comm/rosbag:
+    type: git
+    url: git@github.com:esteve/ros_comm-release.git
+    version: bz2-cmake
+  ros_comm/rosbag_storage:
+    type: git
+    url: git@github.com:esteve/ros_comm-release.git
+    version: console-bridge-updates
+  ros_comm/rosconsole:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: e7176db5ec49764770e4d08733fae145383330fd
+  ros_comm/roscpp:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 44e0efeb32a59ad7894756d9695e88eb0c37cd01
+  ros_comm/rosgraph:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 557daa0bec2d640ace7f5a2a6581522b284c5f0e
+  ros_comm/roslaunch:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: dfd189d8070c4c95f5e0d4cf0137b093347e999e
+  ros_comm/roslz4:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: affa52f72ca844556c5882120dfc67322ab5494f
+  ros_comm/rosmaster:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: cc87f9927bd989a9873cb3facc8fb50220eaff9b
+  ros_comm/rosmsg:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: e9a7aaec211279331a9c3d04c2c843501b8b00a9
+  ros_comm/rosnode:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 78532ed83475b0533f8a4c4ce9e0c111a99e9697
+  ros_comm/rosout:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 0ce70d2f2687133f7079854fab6689679706ca16
+  ros_comm/rosparam:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 33f76f8760200162bcbdb11e26bf9316a3a2ddcc
+  ros_comm/rospy:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: d84a35f5a632139062c8c41a8253f1a1aefd1f01
+  ros_comm/rosservice:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 576a2beb370de0e3d55a4a828d7e5fa008857164
+  ros_comm/rostest:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: f39424916840bd864df8b0465f452d3e556e0c5d
+  ros_comm/rostopic:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 26a33cfc4a32b8901ca93250c51d46ef903c950a
+  ros_comm/roswtf:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 04d7a3b5cd1281c8ca4690901eb68b385e6ee8a2
+  ros_comm/topic_tools:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: 0b8147996097723274062b876927b0d10f6bb76b
+  ros_comm/xmlrpcpp:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm-release.git
+    version: dc8e167f0e898bfe67093c9b1ae1403bc66d3a17
+  ros_comm_msgs/rosgraph_msgs:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm_msgs-release.git
+    version: 3b5b669a7bcfd0f2acd9b45d09f77bfcea7059b0
+  ros_comm_msgs/std_srvs:
+    type: git
+    url: https://github.com/ros-gbp/ros_comm_msgs-release.git
+    version: 63fd4c1a1bea2f285041455b9f816d46e9057134
+  rosbag_migration_rule:
+    type: git
+    url: https://github.com/ros-gbp/rosbag_migration_rule-release.git
+    version: d875aae40a1e1751894b0da30793cea123b9a896
+  rosconsole_bridge:
+    type: git
+    url: https://github.com/ros-gbp/rosconsole_bridge-release.git
+    version: a69b557ab92bec1d36aa0c25bbdbc4858308ecd0
+  roscpp_core/cpp_common:
+    type: git
+    url: https://github.com/ros-gbp/roscpp_core-release.git
+    version: 152631d091eb6ebe176d3dba5c3ba33a5a3b2fa5
+  roscpp_core/roscpp_serialization:
+    type: git
+    url: https://github.com/ros-gbp/roscpp_core-release.git
+    version: 53fbf08f1391194a39b79cd5f98933abdb91cdf4
+  roscpp_core/roscpp_traits:
+    type: git
+    url: https://github.com/ros-gbp/roscpp_core-release.git
+    version: 51ce4d3b309c38d758840ce44e2cc7b46cdc5079
+  roscpp_core/rostime:
+    type: git
+    url: https://github.com/ros-gbp/roscpp_core-release.git
+    version: e0d3639a4f3b5f1b3b64145b0b94bdd3c0d41867
+  rospack:
+    type: git
+    url: https://github.com/ros-gbp/rospack-release.git
+    version: f6f0be5cc41fa97f7741d131ae634ea7cce60756
+  std_msgs:
+    type: git
+    url: https://github.com/ros-gbp/std_msgs-release.git
+    version: 219fd1423bbad7513f595c3062d97706ea4811b7
+  vision_opencv/cv_bridge:
+    type: git
+    url: git@github.com:esteve/vision_opencv.git
+    version: optional-python
