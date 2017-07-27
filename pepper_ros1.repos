@@ -1,24 +1,24 @@
 repositories:
   actionlib:
     type: git
-    url: https://github.com/ros-gbp/actionlib-release.git
-    version: 1243625745f4d0ced29cbf02818e279d1c176428
+    url: https://github.com/ros/actionlib.git
+    version: indigo-devel
   angles:
     type: git
-    url: https://github.com/ros-gbp/geometry_angles_utils-release.git
-    version: 6e1dc72922c0b8c07bf4a9b67e81d36d407d2f2b
+    url: https://github.com/esteve/geometry_angles_utils-release.git
+    version: package2
   catkin:
     type: git
     url: https://github.com/ros-gbp/catkin-release.git
     version: adb4a602096106ce97f9ca0bdf680dd2fa2e4555
   class_loader:
     type: git
-    url: https://github.com/ros-gbp/class_loader-release.git
-    version: 73df32aa21768625cbecc1a1e11ccc81142dd0ee
+    url: https://github.com/ros/class_loader.git
+    version: indigo-devel
   cmake_modules:
     type: git
-    url: https://github.com/ros-gbp/cmake_modules-release.git
-    version: 75f24c23e3895bee084d760d5050af60d11aa0ab
+    url: https://github.com/esteve/cmake_modules.git
+    version: package2
   common_msgs/actionlib_msgs:
     type: git
     url: https://github.com/ros-gbp/common_msgs-release.git
@@ -121,15 +121,15 @@ repositories:
     version: e25d4dc6b0e1cb5406be183cd9c486086a41dc82
   naoqi_driver:
     type: git
-    url: git@github.com:esteve/naoqi_driver.git
+    url: https://github.com/esteve/naoqi_driver.git
     version: bz2-cmake
   naoqi_libqi:
     type: git
-    url: git@github.com:esteve/libqi-release.git
+    url: https://github.com/esteve/libqi-release.git
     version: boost-cmake
   naoqi_libqicore:
     type: git
-    url: git@github.com:esteve/libqicore-release.git
+    url: https://github.com/esteve/libqicore-release.git
     version: boost-cmake
   opencv3:
     type: git
@@ -149,12 +149,8 @@ repositories:
     version: 7e1e9c6eb6a9040a5310e02cb136035917e4f80b
   robot_model/urdf:
     type: git
-    url: git@github.com:esteve/robot_model.git
+    url: https://github.com/esteve/robot_model.git
     version: missing-dependencies
-  robot_model/urdf_parser_plugin:
-    type: git
-    url: https://github.com/ros-gbp/robot_model-release.git
-    version: 69e01865af87626891a7786eca11024366c436ea
   robot_state_publisher:
     type: git
     url: https://github.com/ros-gbp/robot_state_publisher-release.git
@@ -185,11 +181,11 @@ repositories:
     version: 12c3396d5deff5d791e647a064865cc96cccea79
   ros_comm/rosbag:
     type: git
-    url: git@github.com:esteve/ros_comm-release.git
+    url: https://github.com/esteve/ros_comm-release.git
     version: bz2-cmake
   ros_comm/rosbag_storage:
     type: git
-    url: git@github.com:esteve/ros_comm-release.git
+    url: https://github.com/esteve/ros_comm-release.git
     version: console-bridge-updates
   ros_comm/rosconsole:
     type: git
@@ -301,5 +297,5 @@ repositories:
     version: 219fd1423bbad7513f595c3062d97706ea4811b7
   vision_opencv/cv_bridge:
     type: git
-    url: git@github.com:esteve/vision_opencv.git
+    url: https://github.com/esteve/vision_opencv.git
     version: optional-python
