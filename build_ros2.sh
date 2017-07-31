@@ -23,7 +23,7 @@ docker run -it --rm \
   ros2-pepper \
   bash -c "set -euf -o pipefail && \
            set -xv && \
-           export PATH=/home/nao/Python-${PYTHON3_VERSION}-host/bin:\$PATH && \
+           export PATH=/home/nao/Python-${PYTHON3_VERSION}-host/bin:$PATH && \
            cd pepper_ament_ws && \
            vcs import src < pepper_ament.repos && \
            src/ament/ament_tools/scripts/ament.py build \

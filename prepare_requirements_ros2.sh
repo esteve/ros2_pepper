@@ -11,7 +11,8 @@ if [ -z "$ALDE_CTC_CROSS" ]; then
   exit 1
 fi
 
-docker build -t ros2-pepper .
+docker build -t ros2-pepper -f docker/Dockerfile_ros2 docker/
+
 if [ ! -e "Python-${PYTHON3_VERSION}.tar.xz" ]; then
   wget -cN https://www.python.org/ftp/python/$PYTHON3_VERSION/Python-${PYTHON3_VERSION}.tar.xz
   tar xvf Python-${PYTHON3_VERSION}.tar.xz

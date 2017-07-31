@@ -1,0 +1,21 @@
+FROM ubuntu:xenial
+MAINTAINER esteve@apache.org
+RUN dpkg --add-architecture i386
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends locales
+RUN locale-gen en_US en_US.UTF-8
+RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
+RUN apt-get install -y --no-install-recommends lsb-release software-properties-common
+RUN apt-get install -y --no-install-recommends apt-transport-https
+RUN echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list
+RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 421C365BD9FF1F717815A3895523BAEEB01FA116
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends libc6-i386
+RUN apt-get install -y --no-install-recommends apt-transport-https
+RUN apt-get install -y --no-install-recommends build-essential cmake git libssl-dev wget zlib1g-dev
+RUN apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+RUN apt-get install -y python3-vcstool python3-empy
+RUN useradd -ms /bin/bash nao
+WORKDIR /home/nao
+USER nao

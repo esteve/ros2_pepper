@@ -1,0 +1,5 @@
+repositories:
+  poco:
+    type: git
+    url: https://github.com/pocoproject/poco.git
+    version: poco-1.7.8p3-release
