@@ -17,7 +17,7 @@ repositories:
     version: indigo-devel
   cmake_modules:
     type: git
-    url: https://github.com/esteve/cmake_modules.git
+    url: https://github.com/ros/cmake_modules.git
     version: 0.4-devel
   common_msgs:
     type: git
@@ -31,10 +31,22 @@ repositories:
     type: git
     url: https://github.com/ros/gencpp.git
     version: indigo-devel
+  geneus:
+    type: git
+    url: https://github.com/jsk-ros-pkg/geneus.git
+    version: master
+  genlisp:
+    type: git
+    url: https://github.com/ros/genlisp.git
+    version: groovy-devel
   genmsg:
     type: git
     url: https://github.com/ros/genmsg.git
     version: indigo-devel
+  gennodejs:
+    type: git
+    url: https://github.com/RethinkRobotics-opensource/gennodejs.git
+    version: kinetic-devel
   genpy:
     type: git
     url: https://github.com/ros/genpy.git
@@ -71,7 +83,7 @@ repositories:
     type: git
     url: https://github.com/esteve/naoqi_driver.git
     version: bz2-cmake
-  naoqi_libqi.bak:
+  naoqi_libqi:
     type: git
     url: https://github.com/esteve/libqi-release.git
     version: boost-cmake
@@ -90,7 +102,7 @@ repositories:
   pluginlib:
     type: git
     url: https://github.com/ros/pluginlib.git
-    version: kinetic-devel
+    version: 9e1dd8134414a0d6489b420fcf67d9d19e32a38b
   robot_model/urdf:
     type: git
     url: https://github.com/esteve/robot_model.git
@@ -105,8 +117,8 @@ repositories:
     version: kinetic-devel
   ros_comm:
     type: git
-    url: https://github.com/ros/ros_comm.git
-    version: kinetic-devel
+    url: https://github.com/esteve/ros_comm.git
+    version: bz2_cmake
   ros_comm_msgs:
     type: git
     url: https://github.com/ros/ros_comm_msgs.git
@@ -133,5 +145,5 @@ repositories:
     version: groovy-devel
   vision_opencv/cv_bridge:
     type: git
-    url: https://github.com/esteve/vision_opencv.git
-    version: optional-python
+    url: https://github.com/ros-perception/vision_opencv.git
+    version: kinetic

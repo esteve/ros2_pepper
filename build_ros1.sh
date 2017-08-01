@@ -25,6 +25,9 @@ cp poco.repos poco_ws/
 mkdir -p urdfdom_headers_ws/src
 cp urdfdom_headers.repos urdfdom_headers_ws/
 
+mkdir -p urdfdom_ws/src
+cp urdfdom.repos urdfdom_ws/
+
 if [ ! -e "console_bridge_ws/install" ]; then
 
 docker run -it --rm \
@@ -111,6 +114,37 @@ docker run -it --rm \
           make -j4 install"
 fi
 
+if [ ! -e "urdfdom_ws/install" ]; then
+
+docker run -it --rm \
+  -e PYTHON2_VERSION=${PYTHON2_VERSION} \
+  -e ALDE_CTC_CROSS=/home/nao/ctc \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION} \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-pepper:/home/nao/Python-${PYTHON2_VERSION}-pepper \
+  -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
+  -v ${PWD}/pepper_ros1_ws:/home/nao/pepper_ros1_ws \
+  -v ${PWD}/console_bridge_ws:/home/nao/console_bridge_ws \
+  -v ${PWD}/urdfdom_headers_ws:/home/nao/urdfdom_headers_ws \
+  -v ${PWD}/urdfdom_ws:/home/nao/urdfdom_ws \
+  ros1-pepper \
+  bash -c "\
+          export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
+          export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
+          cd /home/nao/urdfdom_ws && \
+          vcs import < urdfdom.repos && \
+          mkdir -p build && \
+          cd build && \
+          cmake \
+          -DCMAKE_INSTALL_PREFIX=/home/nao/urdfdom_ws/install \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+          -DALDE_CTC_CROSS=/home/nao/ctc \
+          -DCMAKE_FIND_ROOT_PATH=\"/home/nao/console_bridge_ws/install;/home/nao/urdfdom_headers_ws/install;/home/nao/ctc\" \
+          ../urdfdom && \
+          make -j4 install"
+fi
+
 docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
@@ -126,12 +160,13 @@ docker run -it --rm \
   -v ${PWD}/poco_ws:/home/nao/poco_ws \
   -v ${PWD}/console_bridge_ws:/home/nao/console_bridge_ws \
   -v ${PWD}/urdfdom_headers_ws:/home/nao/urdfdom_headers_ws \
+  -v ${PWD}/urdfdom_ws:/home/nao/urdfdom_ws \
   ros1-pepper \
   bash -c "\
            export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}/lib && \
            export PATH=/home/nao/Python-${PYTHON2_VERSION}/bin:$PATH && \
            cd pepper_ros1_ws && \
-           vcs import src < pepper_ros1.repos ; \
+           vcs import src < pepper_ros1.repos && \
            ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release \
            --cmake-args \
            -DWITH_QT=OFF \
@@ -144,7 +179,7 @@ docker run -it --rm \
            -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
            -DALDE_CTC_CROSS=/home/nao/ctc \
            -DCMAKE_PREFIX_PATH=\"/home/nao/pepper_ros1_ws/install_isolated\" \
-           -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON2_VERSION}-pepper;/home/nao/console_bridge_ws/install;/home/nao/poco_ws/install;/home/nao/pepper_ros1_ws/install_isolated;/home/nao/urdfdom_headers_ws/install;/home/nao/ctc\" \
+           -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON2_VERSION}-pepper;/home/nao/console_bridge_ws/install;/home/nao/poco_ws/install;/home/nao/pepper_ros1_ws/install_isolated;/home/nao/urdfdom_headers_ws/install;/home/nao/urdfdom_ws/install;/home/nao/ctc\" \
            "
 
 # /home/nao/console_bridge_ws/install;
