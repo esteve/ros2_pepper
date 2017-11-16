@@ -1,6 +1,14 @@
 #!/bin/bash
-PYTHON2_VERSION=2.7.13
-PYTHON3_VERSION=3.6.1
+PYTHON2_MAJOR_VERSION=2
+PYTHON2_MINOR_VERSION=7
+PYTHON2_PATCH_VERSION=13
+
+PYTHON3_MAJOR_VERSION=3
+PYTHON3_MINOR_VERSION=6
+PYTHON3_PATCH_VERSION=1
+
+PYTHON2_VERSION=${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.${PYTHON2_PATCH_VERSION}
+PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATCH_VERSION}
 
 set -euf -o pipefail
 set -xv
@@ -147,6 +155,8 @@ fi
 
 docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
+  -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
+  -e PYTHON2_MINOR_VERSION=${PYTHON2_MINOR_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION} \
@@ -174,13 +184,10 @@ docker run -it --rm \
            -DCATKIN_ENABLE_TESTING=OFF \
 	         -DENABLE_TESTING=OFF \
            -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON2_VERSION}/bin/python \
-           -DPYTHON_LIBRARY=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/libpython2.7.so \
+           -DPYTHON_LIBRARY=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/libpython${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.so \
            -DTHIRDPARTY=ON \
            -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
            -DALDE_CTC_CROSS=/home/nao/ctc \
            -DCMAKE_PREFIX_PATH=\"/home/nao/pepper_ros1_ws/install_isolated\" \
            -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON2_VERSION}-pepper;/home/nao/console_bridge_ws/install;/home/nao/poco_ws/install;/home/nao/pepper_ros1_ws/install_isolated;/home/nao/urdfdom_headers_ws/install;/home/nao/urdfdom_ws/install;/home/nao/ctc\" \
            "
-
-# /home/nao/console_bridge_ws/install;
-#            -DPYTHON_LIBRARY=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/libpython2.7.a \
