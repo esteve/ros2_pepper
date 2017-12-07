@@ -36,6 +36,9 @@ cp urdfdom_headers.repos urdfdom_headers_ws/
 mkdir -p urdfdom_ws/src
 cp urdfdom.repos urdfdom_ws/
 
+mkdir -p tinyxml2_ws/src
+cp tinyxml2.repos tinyxml2_ws/
+
 if [ ! -e "console_bridge_ws/install" ]; then
 
 docker run -it --rm \
@@ -153,6 +156,34 @@ docker run -it --rm \
           make -j4 install"
 fi
 
+if [ ! -e "tinyxml2_ws/install" ]; then
+
+docker run -it --rm \
+  -e PYTHON2_VERSION=${PYTHON2_VERSION} \
+  -e ALDE_CTC_CROSS=/home/nao/ctc \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION} \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-pepper:/home/nao/Python-${PYTHON2_VERSION}-pepper \
+  -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
+  -v ${PWD}/pepper_ros1_ws:/home/nao/pepper_ros1_ws \
+  -v ${PWD}/tinyxml2_ws:/home/nao/tinyxml2_ws \
+  ros1-pepper \
+  bash -c "\
+          export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
+          export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
+          cd /home/nao/tinyxml2_ws && \
+          vcs import < tinyxml2.repos && \
+          mkdir -p build && \
+          cd build && \
+          cmake \
+          -DCMAKE_INSTALL_PREFIX=/home/nao/tinyxml2_ws/install \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+          -DALDE_CTC_CROSS=/home/nao/ctc \
+          ../tinyxml2 && \
+          make -j4 install"
+fi
+
 docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
@@ -171,23 +202,25 @@ docker run -it --rm \
   -v ${PWD}/console_bridge_ws:/home/nao/console_bridge_ws \
   -v ${PWD}/urdfdom_headers_ws:/home/nao/urdfdom_headers_ws \
   -v ${PWD}/urdfdom_ws:/home/nao/urdfdom_ws \
+  -v ${PWD}/tinyxml2_ws:/home/nao/tinyxml2_ws \
   ros1-pepper \
   bash -c "\
            export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}/lib && \
            export PATH=/home/nao/Python-${PYTHON2_VERSION}/bin:$PATH && \
            cd pepper_ros1_ws && \
            vcs import src < pepper_ros1.repos && \
+           touch src/orocos_kinematics_dynamics/python_orocos_kdl/CATKIN_IGNORE && \
            ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release \
            --cmake-args \
            -DWITH_QT=OFF \
            -DSETUPTOOLS_DEB_LAYOUT=OFF \
            -DCATKIN_ENABLE_TESTING=OFF \
-	         -DENABLE_TESTING=OFF \
+	   -DENABLE_TESTING=OFF \
            -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON2_VERSION}/bin/python \
            -DPYTHON_LIBRARY=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/libpython${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.so \
            -DTHIRDPARTY=ON \
            -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
            -DALDE_CTC_CROSS=/home/nao/ctc \
            -DCMAKE_PREFIX_PATH=\"/home/nao/pepper_ros1_ws/install_isolated\" \
-           -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON2_VERSION}-pepper;/home/nao/console_bridge_ws/install;/home/nao/poco_ws/install;/home/nao/pepper_ros1_ws/install_isolated;/home/nao/urdfdom_headers_ws/install;/home/nao/urdfdom_ws/install;/home/nao/ctc\" \
+           -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON2_VERSION}-pepper;/home/nao/console_bridge_ws/install;/home/nao/poco_ws/install;/home/nao/pepper_ros1_ws/install_isolated;/home/nao/urdfdom_headers_ws/install;/home/nao/urdfdom_ws/install;/home/nao/tinyxml2_ws/install;/home/nao/ctc\" \
            "

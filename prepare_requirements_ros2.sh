@@ -15,6 +15,9 @@ docker build -t ros2-pepper -f docker/Dockerfile_ros2 docker/
 
 if [ ! -e "Python-${PYTHON3_VERSION}.tar.xz" ]; then
   wget -cN https://www.python.org/ftp/python/$PYTHON3_VERSION/Python-${PYTHON3_VERSION}.tar.xz
+fi
+
+if [ ! -e "Python-${PYTHON3_VERSION}" ]; then
   tar xvf Python-${PYTHON3_VERSION}.tar.xz
 fi
 
@@ -27,14 +30,15 @@ docker run -it --rm \
   ros2-pepper \
   bash -c "set -euf -o pipefail && \
            set -xv && \
+           pwd && \
            mkdir -p Python-${PYTHON3_VERSION}-src/build-host && \
            cd Python-${PYTHON3_VERSION}-src/build-host && \
            ../configure \
            --prefix=/home/nao/Python-${PYTHON3_VERSION}-host && \
            make install &&
-		   wget https://bootstrap.pypa.io/get-pip.py && \
-		   /home/nao/Python-${PYTHON3_VERSION}-host/bin/python3 get-pip.py && \
-		   /home/nao/Python-${PYTHON3_VERSION}-host/bin/pip3 install vcstool empy"
+       export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON3_VERSION}-host/lib && \
+       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/Python-${PYTHON3_VERSION}-host/bin/python3 && \
+		   /home/nao/Python-${PYTHON3_VERSION}-host/bin/pip3 install empy catkin-pkg setuptools vcstool pyparsing"
 
 docker run -it --rm \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
@@ -47,6 +51,7 @@ docker run -it --rm \
            set -xv && \
            mkdir -p Python-${PYTHON3_VERSION}-src/build-pepper && \
            cd Python-${PYTHON3_VERSION}-src/build-pepper && \
+           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON3_VERSION}-pepper/lib && \
            export PATH=/home/nao/Python-${PYTHON3_VERSION}-host/bin:$PATH && \
            CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc \
            CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
@@ -61,6 +66,7 @@ docker run -it --rm \
            --prefix=/home/nao/Python-${PYTHON3_VERSION}-pepper \
            --host=i686-aldebaran-linux-gnu \
            --build=x86_64-linux \
+           --enable-shared \
            --disable-ipv6 \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \

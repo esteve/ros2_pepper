@@ -16,6 +16,7 @@ RUN apt-get install -y --no-install-recommends apt-transport-https
 RUN apt-get install -y --no-install-recommends build-essential cmake git libssl-dev wget zlib1g-dev
 RUN apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 RUN apt-get install -y python3-vcstool python3-empy
+RUN apt-get install -y pkg-config
 RUN useradd -ms /bin/bash nao
 WORKDIR /home/nao
 USER nao

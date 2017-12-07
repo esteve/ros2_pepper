@@ -145,7 +145,8 @@ endif()
 
 ##
 # Set pkg-config for cross-compilation
-set(PKG_CONFIG_EXECUTABLE  "${ALDE_CTC_CROSS}/bin/pkg-config" CACHE INTERNAL "" FORCE)
+#set(PKG_CONFIG_EXECUTABLE  "${ALDE_CTC_CROSS}/bin/pkg-config" CACHE INTERNAL "" FORCE)
+set(PKG_CONFIG_EXECUTABLE  "/usr/bin/pkg-config" CACHE INTERNAL "" FORCE)
 
 ##
 # Set target flags
@@ -328,3 +329,5 @@ set(EIGEN3_FOUND TRUE CACHE INTERNAL "" FORCE)
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--as-needed,--sysroot,${ALDE_CTC_SYSROOT}/ ${_link_flags}" CACHE INTERNAL "")
 set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--as-needed,--sysroot,${ALDE_CTC_SYSROOT}/ ${_link_flags}" CACHE INTERNAL "")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--as-needed,--sysroot,${ALDE_CTC_SYSROOT}/ ${_link_flags}" CACHE INTERNAL "")
+
+# set(OpenCV_DIR ${ALDE_CTC_CROSS}/opencv2/share/OpenCV/ CACHE INTERNAL "" FORCE)
