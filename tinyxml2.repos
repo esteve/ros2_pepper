@@ -1,0 +1,5 @@
+repositories:
+  tinyxml2:
+    type: git
+    url: https://github.com/leethomason/tinyxml2.git
+    version: 5.0.1
