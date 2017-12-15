@@ -2,4 +2,4 @@ repositories:
   console_bridge:
     type: git
     url: https://github.com/ros/console_bridge.git
-    version: master
+    version: 8c3c62501bf8521dcf53705b497ea982b874c25d
