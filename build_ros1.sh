@@ -55,7 +55,7 @@ docker run -it --rm \
           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
           cd /home/nao/console_bridge_ws && \
-          vcs import < console_bridge.repos && \
+          vcs import src < console_bridge.repos && \
           mkdir -p build && \
           cd build && \
           cmake \
@@ -83,7 +83,7 @@ docker run -it --rm \
           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
           cd /home/nao/poco_ws && \
-          vcs import < poco.repos && \
+          vcs import src < poco.repos && \
           mkdir -p build2 && \
           cd build2 && \
           cmake \
@@ -113,7 +113,7 @@ docker run -it --rm \
           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
           cd /home/nao/urdfdom_headers_ws && \
-          vcs import < urdfdom_headers.repos && \
+          vcs import src < urdfdom_headers.repos && \
           mkdir -p build && \
           cd build && \
           cmake \
@@ -143,7 +143,7 @@ docker run -it --rm \
           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
           cd /home/nao/urdfdom_ws && \
-          vcs import < urdfdom.repos && \
+          vcs import src < urdfdom.repos && \
           mkdir -p build && \
           cd build && \
           cmake \
@@ -172,7 +172,7 @@ docker run -it --rm \
           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
           cd /home/nao/tinyxml2_ws && \
-          vcs import < tinyxml2.repos && \
+          vcs import src < tinyxml2.repos && \
           mkdir -p build && \
           cd build && \
           cmake \
