@@ -63,7 +63,7 @@ docker run -it --rm \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
           -DALDE_CTC_CROSS=/home/nao/ctc \
-          ../console_bridge && \
+          ../src/console_bridge && \
           make -j4 install"
 fi
 
@@ -84,15 +84,15 @@ docker run -it --rm \
           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
           cd /home/nao/poco_ws && \
           vcs import src < poco.repos && \
-          mkdir -p build2 && \
-          cd build2 && \
+          mkdir -p build && \
+          cd build && \
           cmake \
           -DWITH_QT=OFF \
           -DCMAKE_INSTALL_PREFIX=/home/nao/poco_ws/install \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
           -DALDE_CTC_CROSS=/home/nao/ctc \
-          ../poco && \
+          ../src/poco && \
           make -j4 install"
 fi
 
@@ -121,7 +121,7 @@ docker run -it --rm \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
           -DALDE_CTC_CROSS=/home/nao/ctc \
-          ../urdfdom_headers && \
+          ../src/urdfdom_headers && \
           make -j4 install"
 fi
 
@@ -152,7 +152,7 @@ docker run -it --rm \
           -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
           -DALDE_CTC_CROSS=/home/nao/ctc \
           -DCMAKE_FIND_ROOT_PATH=\"/home/nao/console_bridge_ws/install;/home/nao/urdfdom_headers_ws/install;/home/nao/ctc\" \
-          ../urdfdom && \
+          ../src/urdfdom && \
           make -j4 install"
 fi
 
@@ -180,7 +180,7 @@ docker run -it --rm \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
           -DALDE_CTC_CROSS=/home/nao/ctc \
-          ../tinyxml2 && \
+          ../src/tinyxml2 && \
           make -j4 install"
 fi
 
