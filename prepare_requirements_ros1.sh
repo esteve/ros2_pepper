@@ -24,36 +24,36 @@ mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-pepper
 docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
-  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   ros1-pepper \
   bash -c "set -euf -o pipefail && \
            set -xv && \
            mkdir -p Python-${PYTHON2_VERSION}-src/build-host && \
            cd Python-${PYTHON2_VERSION}-src/build-host && \
-           export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:$PATH && \
+           export PATH=/home/nao/Python-${PYTHON2_VERSION}/bin:$PATH && \
            ../configure \
-           --prefix=/home/nao/Python-${PYTHON2_VERSION}-host \
+           --prefix=/home/nao/Python-${PYTHON2_VERSION} \
            --disable-ipv6 \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \
-       export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
+       export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}/lib && \
 		   make install && \
-       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/Python-${PYTHON2_VERSION}-host/bin/python && \
-       /home/nao/Python-${PYTHON2_VERSION}-host/bin/pip install empy catkin-pkg setuptools vcstool numpy"
+       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/Python-${PYTHON2_VERSION}/bin/python && \
+       /home/nao/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
 
 docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
-  -v ${PWD}/Python-${PYTHON2_VERSION}-pepper:/home/nao/Python-${PYTHON2_VERSION}-pepper \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-pepper:/home/nao/Python-${PYTHON2_VERSION} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   ros1-pepper \
   bash -c "set -euf -o pipefail && \
            set -xv && \
            mkdir -p Python-${PYTHON2_VERSION}-src/build-pepper && \
            cd Python-${PYTHON2_VERSION}-src/build-pepper && \
-           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-pepper/lib && \
-           export PATH=/home/nao/Python-${PYTHON2_VERSION}-pepper/bin:$PATH && \
+           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}/lib && \
+           export PATH=/home/nao/Python-${PYTHON2_VERSION}/bin:$PATH && \
            CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc \
            CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
            CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
@@ -66,7 +66,7 @@ docker run -it --rm \
            CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
            LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
            ../configure \
-           --prefix=/home/nao/Python-${PYTHON2_VERSION}-pepper \
+           --prefix=/home/nao/Python-${PYTHON2_VERSION} \
            --host=i686-aldebaran-linux-gnu \
            --build=x86_64-linux \
            --enable-shared \
@@ -74,5 +74,5 @@ docker run -it --rm \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \
 		   make install && \
-       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/Python-${PYTHON2_VERSION}-pepper/bin/python && \
-       /home/nao/Python-${PYTHON2_VERSION}-pepper/bin/pip install empy catkin-pkg setuptools vcstool numpy"
+       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/Python-${PYTHON2_VERSION}/bin/python && \
+       /home/nao/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
