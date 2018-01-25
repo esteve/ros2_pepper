@@ -1,4 +1,4 @@
-## Introduction
+ I'm going to merge this and then rename `.ros-root` to `ros-root`, I think there's no need to have it as a hi## Introduction
 
 This project contains a set of patches and scripts to compile and run ROS 1 ROS 2 from within a Pepper robot, without the need of a tethered computer.
 
@@ -77,13 +77,13 @@ Now that we have it all in the robot, let's give it a try:
 *SSH into the robot*
 
 ```
-$ ssh nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT
+$ ssh nao@IP_ADDRESS_OF_YOUR_ROBOT
 ```
 
 *Source (not run) the setup script*
 
 ```
-$ source .ros-root/setup\_ros1\_pepper.bash
+$ source .ros-root/setup_ros1_pepper.bash
 ```
 
 *Start naoqi_driver, note that NETWORK\_INTERFACE may be either wlan0 or eth0, pick the appropriate interface if your robot is connected via wifi or ethernet*
