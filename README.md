@@ -67,19 +67,7 @@ We're going to copy these to the robot, assuming that your robot is connected to
 *Make sure you copy Python to the directory Python-2.7.13, without -pepper*
 
 ```
-$ scp -r Python-2.7.13-pepper nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT:/home/nao/Python-2.7.13
-```
-
-```
-$ scp -r ros1\_dependencies nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT:/home/nao/ros1\_dependencies
-```
-
-```
-$ scp -r pepper\_ros1\_ws nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT:/home/nao/pepper\_ros1\_ws
-```
-
-```
-$ scp setup\_ros1\_pepper.bash
+$ scp -r .ros-root nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT:.ros-root
 ```
 
 ### Run ROS from within Pepper
@@ -95,7 +83,7 @@ $ ssh nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT
 *Source (not run) the setup script*
 
 ```
-$ source setup\_ros1\_pepper.bash
+$ source .ros-root/setup\_ros1\_pepper.bash
 ```
 
 *Start naoqi_driver, note that NETWORK\_INTERFACE may be either wlan0 or eth0, pick the appropriate interface if your robot is connected via wifi or ethernet*
