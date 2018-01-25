@@ -67,7 +67,7 @@ We're going to copy these to the robot, assuming that your robot is connected to
 *Make sure you copy Python to the directory Python-2.7.13, without -pepper*
 
 ```
-$ scp -r .ros-root nao@IP\_ADDRESS\_OF\_YOUR\_ROBOT:.ros-root
+$ scp -r .ros-root nao@IP_ADDRESS_OF_YOUR_ROBOT:.ros-root
 ```
 
 ### Run ROS from within Pepper
