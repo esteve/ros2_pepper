@@ -39,6 +39,7 @@ docker run -it --rm \
            ../configure \
            --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
            --disable-ipv6 \
+					 --enable-unicode=ucs4 \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \
        export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
@@ -76,6 +77,7 @@ docker run -it --rm \
            --build=x86_64-linux \
            --enable-shared \
            --disable-ipv6 \
+					 --enable-unicode=ucs4 \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \
 		   make install && \

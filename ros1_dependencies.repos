@@ -19,3 +19,39 @@ repositories:
     type: git
     url: https://github.com/ros/urdfdom.git
     version: 0.4.2
+  bullet3:
+    type: git
+    url: https://github.com/bulletphysics/bullet3.git
+    version: 19f999ac087e68ffc2551ffb73e35e60271a0d27
+  SDL:
+    type: git
+    url: https://github.com/SDL-mirror/SDL.git
+    version: SDL-1.2
+  SDL_image:
+    type: git
+    url: https://github.com/SDL-mirror/SDL_image.git
+    version: SDL-1.2
+  Yaml-cpp:
+    type: git
+    url: https://github.com/jbeder/yaml-cpp.git
+    version: 998d7bf31e1bab4e45221c28fad8e00ddcf8855e
+  pcl:
+    type: git
+    url: https://github.com/fmrico/pcl-crossready.git
+    version: master
+  eigen3:
+    type: git
+    url: https://github.com/eigenteam/eigen-git-mirror.git
+    version: e3e413ac46faaac0c4441b44b34936fcfa16f789
+  flann:
+    type: git
+    url: https://github.com/fmrico/flann-crossready.git
+    version: master
+  hdf5:
+    type: git
+    url: https://github.com/fmrico/hdf5-crossready.git
+    version: master
+  qhull:
+    type: git
+    url: https://github.com/fmrico/qhull.git
+    version: master

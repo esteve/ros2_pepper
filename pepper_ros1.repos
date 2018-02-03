@@ -43,6 +43,10 @@ repositories:
     type: git
     url: https://github.com/ros-gbp/common_msgs-release.git
     version: 12d87e83e5961f665c09ed710444bbcbdc1464a4
+  common_msgs/visualization_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: dd5e731d68bc18793545c0e61ea0f3704f7a3a09
   diagnostics/diagnostic_updater:
     type: git
     url: https://github.com/ros-gbp/diagnostics-release.git
@@ -99,6 +103,10 @@ repositories:
     type: git
     url: https://github.com/ros-gbp/geometry2-release.git
     version: e99e6f727a2d2262ae301d0a23df84d6c42011ed
+  geometry2/tf2_eigen:
+    type: git
+    url: https://github.com/ros-gbp/geometry2-release.git
+    version: 0cbac0f2d802df2261b130c311a87714a0d452fa
   image_common/image_transport:
     type: git
     url: https://github.com/ros-gbp/image_common-release.git
@@ -299,3 +307,179 @@ repositories:
     type: git
     url: https://github.com/ros-gbp/vision_opencv-release.git
     version: d528ee7b79dcb591c4d5fc946cfc5a3d26b00628
+  image_common/camera_calibration_parsers:
+    type: git
+    url: https://github.com/ros-gbp/image_common-release.git
+    version: e5e9666c34cbc1460876e8f72227504c61743f91
+  image_common/camera_info_managers:
+    type: git
+    url: https://github.com/ros-gbp/image_common-release.git
+    version: 2c531ce3ff230fa38583b1520cf84e12be3de2b4
+  image_common/camera_info_manager_py:
+    type: git
+    url: https://github.com/ros-gbp/camera_info_manager_py-release.git
+    version: 3b49951c8e320357df6a30578fe20b4d61d20b90
+  image_pipeline/depth_image_proc:
+    type: git
+    url: https://github.com/ros-gbp/image_pipeline-release.git
+    version: 0727524efcf628695a7941c78e4b28b4e5c11b87
+  geometry/eigen_conversions:
+    type: git
+    url: https://github.com/ros-gbp/geometry-release.git
+    version: 97e1aeb86f09595411fb77c6f76b5fb7dd7ee660
+  vision_opencv/image_geometry:
+    type: git
+    url: https://github.com/ros-gbp/vision_opencv-release.git
+    version: d0c997ebbf5935f8a19ecf08f2bbd8c21b8d3012
+  image_pipeline/image_proc:
+    type: git
+    url: https://github.com/ros-gbp/image_pipeline-release.git
+    version: 4010424c8aa7e5b1ca161ad315db65381b67be39
+  naoqi_driver_py/naoqi_pose/naoqi_sensors_py:
+    type: git
+    url: https://github.com/fmrico/naoqi_bridge.git
+    version: master
+  nodelet_core/nodelet:
+    type: git
+    url: https://github.com/ros-gbp/nodelet_core-release.git
+    version: 7ec7208be7a029aba2731fa8fa4e8bb18b7e8539
+  nodelet_core/nodelet_topic_tools:
+    type: git
+    url: https://github.com/ros-gbp/nodelet_core-release.git
+    version: 1ec4482b0d4aa65eb4dedecf6ed874ede26f20ea
+  octomap/octomap:
+    type: git
+    url: https://github.com/ros-gbp/octomap-release.git
+    version: 9990ea5c224881f92bb98896efff3d8fdc86bc57
+  octomap_msgs:
+    type: git
+    url: https://github.com/ros-gbp/octomap_msgs-release.git
+    version: 5d6f6c4d236845e98713cfe5c416cf02a4984bed
+  pepper_robot:
+    type: git
+    url: https://github.com/fmrico/pepper_robot.git
+    version: master
+  pluginlib:
+    type: git
+    url: https://github.com/ros-gbp/pluginlib-release.git
+    version: 1729bd70dee2c2de0480f778b3384b622bc48589
+  rgbdlaunch:
+    type: git
+    url: https://github.com/ros-gbp/rgbd_launch-release.git
+    version: fb460efd8007d65e90dc675db7a1bbc2e82ace5d
+  ros/rosbash:
+    type: git
+    url: https://github.com/ros-gbp/ros-release.git
+    version: 083a1a5663f5b54886b707401c63ad51fc0c4b4a
+  roslint:
+    type: git
+    url: https://github.com/ros-gbp/roslint-release.git
+    version: d4825ed313b494e4d8a0c4d5bc6efa1acf0621cf
+  bond_core/bond:
+    type: git
+    url: https://github.com/ros-gbp/bond_core-release.git
+    version: ace0455b314fff241fc597bf0088dd920b2cd235
+  bond_core/bondcpp:
+    type: git
+    url: https://github.com/ros-gbp/bond_core-release.git
+    version: 0b63e9f92f046976ed154cbe178dc11e61c00dfe
+  bond_core/smclib:
+    type: git
+    url: https://github.com/ros-gbp/bond_core-release.git
+    version: b751d24f7d41d568099007eb2ef64cd292215f91
+  common_msgs/stereo_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 82eb2a6cef3284576c01984df00d72e3e8cc9901
+  xacro:
+    type: git
+    url: https://github.com/ros-gbp/xacro-release.git
+    version: eb62b94c9b9f5715c445be0c8ba720aa06b30977
+  dynamic_reconfigure:
+    type: git
+    url: https://github.com/ros-gbp/dynamic_reconfigure-release.git
+    version: 317276c415da22453ce747404d7f09bf51c57da6
+  navigation/costmap_2d:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 5c1fbd25c63b0d0ad4d8c4fcabe0720e6d3a754e
+  navigation/clear_costmap_recovery:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 9bf8f1595b18295a553e7ad0f48b35e7f6c22920
+  navigation/amcl:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: c4974da43451e7897f1c4abeac8bcace8025eafd
+  navigation/base_local_planner:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: a6e1682516ed5098facf5880e780c36e93c1a5f1
+  navigation/carrot_planner:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 725ec1f14f7e9dac4c7d733a60f5d2e2479bc541
+  navigation/dwa_local_planner:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 4244b02944ce3b8868a5ab1ca1b50157405e1a39
+  navigation/global_planner:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 03fdea495038e7c7482da35560a0632aa2230ba7
+  navigation/move_base:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 037d5f534c8acc96fae25babdd62f6e8bb370525
+  navigation/move_slow_and_clear:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 05f0aabac8520988e7d9c786dfd7002d0bc0e80d
+  navigation/nav_core:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: c2da784c79fde3bd1f5e9e9f26bccc7f15c4aae4
+  navigation/navfn:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 6b94fe79b91936a1302e0be335ea45b31ed33c34
+  navigation/navigation:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 5a2630e2b85b874125a8188f84f02346063b2bf5
+  navigation/map_server:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: a538e89164f847cd06577eca3b531b6b4a0b093a
+  navigation/move_base_msgs:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: b14431881fe645768c35bdb98264f1578aacb86b
+  navigation/rotate_recovery:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: 798773715492e58e831143c9ce5bfa7546578d2a
+  navigation/voxel_grid:
+    type: git
+    url: https://github.com/ros-gbp/navigation-release.git
+    version: af9ba5ecf0db2a51e2a032cd419c59d51ee073d2
+  laser_geometry:
+    type: git
+    url: https://github.com/ros-gbp/laser_geometry-release.git
+    version: dd1ff641e05dd6997ea408b2cae819638f040f93
+  map_msgs:
+    type: git
+    url: https://github.com/ros-gbp/map_msgs-release.git
+    version: c01f54af4cc5839481395e5f7e5c4fb17c2a2d8d
+  pcl_conversions:
+    type: git
+    url: https://github.com/ros-gbp/pcl_conversions-release.git
+    version: 46e50ce2ba1ffe26d3fe736e3a1f720a2150ae53
+  perception_pcl/pcl_ros:
+    type: git
+    url: https://github.com/ros-gbp/perception_pcl-release.git
+    version: 973479d950167d41fefce84d4395d10ae641c1e3
+  pcl_msgs:
+    type: git
+    url: https://github.com/ros-gbp/pcl_msgs-release.git
+    version: 0c0b51104186098d10af31242d7438348a9057f9

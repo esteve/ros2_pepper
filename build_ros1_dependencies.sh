@@ -45,6 +45,7 @@ docker run -it --rm \
   bash -c "\
         export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
         export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+				export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
         cd /home/nao/ros1_dependencies_sources && \
         vcs import src < ros1_dependencies.repos && \
         mkdir -p /home/nao/ros1_dependencies_sources/build/console_bridge && \
@@ -94,4 +95,153 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/${INSTALL_ROOT}/ros1_dependencies;/home/nao/ctc\" \
         ../../src/tinyxml2 && \
-        make -j4 install"
+        make -j4 install&& \
+        \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/SDL && \
+        cd /home/nao/ros1_dependencies_sources/src/SDL && \
+        ./autogen.sh && \
+        cd /home/nao/ros1_dependencies_sources/build/SDL && \
+        CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
+        CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
+        CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
+        RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
+        AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
+        AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
+        LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
+        READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
+        CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
+        CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
+        LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
+        ../../src/SDL/configure \
+        --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        --host=i686-aldebaran-linux-gnu \
+        --build=x86_64-linux \
+        --enable-shared && \
+        make -j4 install &&\
+				\
+				mkdir -p /home/nao/ros1_dependencies_sources/build/SDL_image && \
+        export PATH=$PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/bin && \
+        cd /home/nao/ros1_dependencies_sources/build/SDL_image && \
+        CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
+        CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
+        CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
+        RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
+        AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
+        AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
+        LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
+        READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
+        CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
+        CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
+        LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
+        ../../src/SDL_image/configure \
+        --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        --host=i686-aldebaran-linux-gnu \
+        --build=x86_64-linux \
+        --enable-shared && \
+        make -j4 install && \
+        \
+				mkdir -p /home/nao/ros1_dependencies_sources/build/hdf5 && \
+        export PATH=$PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/bin && \
+				cd /home/nao/ros1_dependencies_sources/build/hdf5 && \
+				CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
+        CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
+        CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
+        RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
+        AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
+        AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
+        LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
+        READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
+        CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
+        CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
+        LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
+        ../../src/hdf5/configure \
+        --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        --host=i686-aldebaran-linux-gnu \
+        --build=x86_64-linux \
+        --enable-shared && \
+        make -j4 install &&\
+        \
+				mkdir -p /home/nao/ros1_dependencies_sources/build/bullet && \
+        cd /home/nao/ros1_dependencies_sources/build/bullet && \
+        cmake  \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+        -BUILD_CPU_DEMOS=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+         ../../src/bullet3 && \
+        make -j4 install && \
+        \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/Yaml-cpp && \
+        cd /home/nao/ros1_dependencies_sources/build/Yaml-cpp && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+        -DBUILD_SHARED_LIBS=ON \
+         ../../src/Yaml-cpp && \
+        make -j4 install &&\
+				\
+				mkdir -p /home/nao/ros1_dependencies_sources/build/eigen3 && \
+				cd /home/nao/ros1_dependencies_sources/build/eigen3 && \
+				cmake \
+				-DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+				-DCMAKE_BUILD_TYPE=Release \
+				-DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+				-DALDE_CTC_CROSS=/home/nao/ctc \
+				-DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+				-DBUILD_SHARED_LIBS=ON \
+				-DCMAKE_CXX_COMPILER_ID=GNU \
+				 ../../src/eigen3 && \
+				make -j4 install &&\
+				\
+        mkdir -p /home/nao/ros1_dependencies_sources/build/qhull && \
+        cd /home/nao/ros1_dependencies_sources/build/qhull && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+        -DBUILD_SHARED_LIBS=ON \
+				-DBUILD_TEST=OFF \
+         ../../src/qhull && \
+        make -j4 install && \
+				\
+        mkdir -p /home/nao/ros1_dependencies_sources/build/flann && \
+        cd /home/nao/ros1_dependencies_sources/build/flann && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+        -DBUILD_SHARED_LIBS=ON \
+				-DBUILD_TEST=OFF \
+				-DBUILD_PYTHON_BINDINGS=OFF \
+				-DBUILD_MATLAB_BINDINGS=OFF \
+         ../../src/flann && \
+        make -j4 install && \
+				\
+				mkdir -p /home/nao/ros1_dependencies_sources/build/pcl && \
+				cd /home/nao/ros1_dependencies_sources/build/pcl && \
+				cmake \
+				-DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+				-DCMAKE_BUILD_TYPE=Release \
+				-DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+				-DALDE_CTC_CROSS=/home/nao/ctc \
+				-DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+				-DCMAKE_MODULE_PATH=\"/home/nao/ctc/\" \
+				-DBUILD_SHARED_LIBS=ON \
+				-DWITH_VTK=OFF \
+				-DWITH_QT=OFF \
+				-DBUILD_segmentation=ON\
+				-DBUILD_surface=ON\
+				-Wno-dev \
+				 ../../src/pcl && \
+				make -j4 install \
+"
