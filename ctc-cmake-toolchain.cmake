@@ -30,7 +30,7 @@ endif()
 
 set(INSTALL_ROOT $ENV{INSTALL_ROOT})
 if(" " STREQUAL "${INSTALL_ROOT} ")
-	set(INSTALL_ROOT ".ros-root")
+    set(INSTALL_ROOT "ros-root")
 endif()
 
 set(ALDE_CTC_SYSROOT "${ALDE_CTC_CROSS}/${TARGET_TUPLE}/sysroot")
@@ -200,7 +200,7 @@ set(_library_dirs
   -L${ALDE_CTC_CROSS}/tiff/lib \
   -L${ALDE_CTC_CROSS}/zlib/lib \
   -L${ALDE_CTC_CROSS}/xz_utils/lib \
-	-L/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib \
+    -L/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib \
   "
 )
 
@@ -353,35 +353,35 @@ elseif(
     "
   )
 elseif(
-	  PROJECT_NAME STREQUAL "image_proc"
-	)
-	  set(_link_flags
-	    "\
-	    -ljpeg \
-	    -llzma \
-	    -lpng16 \
-	    -ltiff \
-	    -lz \
-	    "
-	  )
+  PROJECT_NAME STREQUAL "image_proc"
+)
+  set(_link_flags
+    "\
+    -ljpeg \
+    -llzma \
+    -lpng16 \
+    -ltiff \
+    -lz \
+    "
+  )
 elseif(
-	  PROJECT_NAME STREQUAL "amcl"
-	)
-	  set(_link_flags
-	    "\
-	    -lbz2 \
-	    "
-	  )
+  PROJECT_NAME STREQUAL "amcl"
+)
+  set(_link_flags
+    "\
+    -lbz2 \
+    "
+  )
 elseif(
-	  PROJECT_NAME STREQUAL "pcl_ros"
-	)
-	  set(_link_flags
-	    "\
-	    -lpcl_io_ply \
-			-lbz2 \
-			-lz \
-	    "
-	  )
+  PROJECT_NAME STREQUAL "pcl_ros"
+)
+  set(_link_flags
+    "\
+    -lpcl_io_ply \
+    -lbz2 \
+    -lz \
+    "
+  )
 endif()
 
 set(EIGEN3_INCLUDE_DIR ${ALDE_CTC_CROSS}/eigen3/include/eigen3/ CACHE INTERNAL "" FORCE)

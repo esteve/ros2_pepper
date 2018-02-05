@@ -10,7 +10,7 @@ PYTHON3_PATCH_VERSION=1
 PYTHON2_VERSION=${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.${PYTHON2_PATCH_VERSION}
 PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATCH_VERSION}
 
-INSTALL_ROOT=.ros-root
+INSTALL_ROOT=ros-root
 
 set -euf -o pipefail
 set -xv
@@ -45,7 +45,7 @@ docker run -it --rm \
   bash -c "\
         export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
         export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
-				export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
         cd /home/nao/ros1_dependencies_sources && \
         vcs import src < ros1_dependencies.repos && \
         mkdir -p /home/nao/ros1_dependencies_sources/build/console_bridge && \
@@ -118,8 +118,8 @@ docker run -it --rm \
         --build=x86_64-linux \
         --enable-shared && \
         make -j4 install &&\
-				\
-				mkdir -p /home/nao/ros1_dependencies_sources/build/SDL_image && \
+        \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/SDL_image && \
         export PATH=$PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/bin && \
         cd /home/nao/ros1_dependencies_sources/build/SDL_image && \
         CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
@@ -140,10 +140,10 @@ docker run -it --rm \
         --enable-shared && \
         make -j4 install && \
         \
-				mkdir -p /home/nao/ros1_dependencies_sources/build/hdf5 && \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/hdf5 && \
         export PATH=$PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/bin && \
-				cd /home/nao/ros1_dependencies_sources/build/hdf5 && \
-				CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
+        cd /home/nao/ros1_dependencies_sources/build/hdf5 && \
+        CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
         CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
         CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
         RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
@@ -161,7 +161,7 @@ docker run -it --rm \
         --enable-shared && \
         make -j4 install &&\
         \
-				mkdir -p /home/nao/ros1_dependencies_sources/build/bullet && \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/bullet && \
         cd /home/nao/ros1_dependencies_sources/build/bullet && \
         cmake  \
         -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
@@ -185,20 +185,20 @@ docker run -it --rm \
         -DBUILD_SHARED_LIBS=ON \
          ../../src/Yaml-cpp && \
         make -j4 install &&\
-				\
-				mkdir -p /home/nao/ros1_dependencies_sources/build/eigen3 && \
-				cd /home/nao/ros1_dependencies_sources/build/eigen3 && \
-				cmake \
-				-DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-				-DCMAKE_BUILD_TYPE=Release \
-				-DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-				-DALDE_CTC_CROSS=/home/nao/ctc \
-				-DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
-				-DBUILD_SHARED_LIBS=ON \
-				-DCMAKE_CXX_COMPILER_ID=GNU \
-				 ../../src/eigen3 && \
-				make -j4 install &&\
-				\
+        \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/eigen3 && \
+        cd /home/nao/ros1_dependencies_sources/build/eigen3 && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_CXX_COMPILER_ID=GNU \
+         ../../src/eigen3 && \
+        make -j4 install &&\
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/qhull && \
         cd /home/nao/ros1_dependencies_sources/build/qhull && \
         cmake \
@@ -208,10 +208,10 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
         -DBUILD_SHARED_LIBS=ON \
-				-DBUILD_TEST=OFF \
+        -DBUILD_TEST=OFF \
          ../../src/qhull && \
         make -j4 install && \
-				\
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/flann && \
         cd /home/nao/ros1_dependencies_sources/build/flann && \
         cmake \
@@ -221,27 +221,27 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
         -DBUILD_SHARED_LIBS=ON \
-				-DBUILD_TEST=OFF \
-				-DBUILD_PYTHON_BINDINGS=OFF \
-				-DBUILD_MATLAB_BINDINGS=OFF \
+        -DBUILD_TEST=OFF \
+        -DBUILD_PYTHON_BINDINGS=OFF \
+        -DBUILD_MATLAB_BINDINGS=OFF \
          ../../src/flann && \
         make -j4 install && \
-				\
-				mkdir -p /home/nao/ros1_dependencies_sources/build/pcl && \
-				cd /home/nao/ros1_dependencies_sources/build/pcl && \
-				cmake \
-				-DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-				-DCMAKE_BUILD_TYPE=Release \
-				-DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-				-DALDE_CTC_CROSS=/home/nao/ctc \
-				-DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
-				-DCMAKE_MODULE_PATH=\"/home/nao/ctc/\" \
-				-DBUILD_SHARED_LIBS=ON \
-				-DWITH_VTK=OFF \
-				-DWITH_QT=OFF \
-				-DBUILD_segmentation=ON\
-				-DBUILD_surface=ON\
-				-Wno-dev \
-				 ../../src/pcl && \
-				make -j4 install \
+        \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/pcl && \
+        cd /home/nao/ros1_dependencies_sources/build/pcl && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
+        -DCMAKE_MODULE_PATH=\"/home/nao/ctc/\" \
+        -DBUILD_SHARED_LIBS=ON \
+        -DWITH_VTK=OFF \
+        -DWITH_QT=OFF \
+        -DBUILD_segmentation=ON\
+        -DBUILD_surface=ON\
+        -Wno-dev \
+         ../../src/pcl && \
+        make -j4 install \
 "

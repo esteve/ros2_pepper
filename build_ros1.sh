@@ -10,7 +10,7 @@ PYTHON3_PATCH_VERSION=1
 PYTHON2_VERSION=${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.${PYTHON2_PATCH_VERSION}
 PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATCH_VERSION}
 
-INSTALL_ROOT=.ros-root
+INSTALL_ROOT=ros-root
 
 set -euf -o pipefail
 set -xv
@@ -34,7 +34,7 @@ docker run -it --rm \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
   -e PYTHON2_MINOR_VERSION=${PYTHON2_MINOR_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
-	-e INSTALL_ROOT=${INSTALL_ROOT} \
+  -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:ro \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host:ro \
@@ -51,7 +51,7 @@ docker run -it --rm \
            export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
            export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
            export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
-					 cd pepper_ros1_ws && \
+           cd pepper_ros1_ws && \
            vcs import src < pepper_ros1.repos && \
            touch src/orocos_kinematics_dynamics/python_orocos_kdl/CATKIN_IGNORE && \
            ./src/catkin/bin/catkin_make_isolated --install --install-space /home/nao/${INSTALL_ROOT}/ros1_inst -DCMAKE_BUILD_TYPE=Release \
