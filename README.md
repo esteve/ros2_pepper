@@ -1,4 +1,4 @@
- I'm going to merge this and then rename `.ros-root` to `ros-root`, I think there's no need to have it as a hi## Introduction
+## Introduction
 
 This project contains a set of patches and scripts to compile and run ROS 1 ROS 2 from within a Pepper robot, without the need of a tethered computer.
 

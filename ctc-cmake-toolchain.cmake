@@ -30,7 +30,7 @@ endif()
 
 set(INSTALL_ROOT $ENV{INSTALL_ROOT})
 if(" " STREQUAL "${INSTALL_ROOT} ")
-    set(INSTALL_ROOT "ros-root")
+    set(INSTALL_ROOT ".ros-root")
 endif()
 
 set(ALDE_CTC_SYSROOT "${ALDE_CTC_CROSS}/${TARGET_TUPLE}/sysroot")
