@@ -235,6 +235,7 @@ set(TIFF_INCLUDE_DIR "${ALDE_CTC_CROSS}/tiff/include" CACHE INTERNAL "" FORCE)
 set(PNG_LIBRARY "${ALDE_CTC_CROSS}/png/lib/libpng.so" CACHE INTERNAL "" FORCE)
 set(PNG_PNG_INCLUDE_DIR "${ALDE_CTC_CROSS}/png/include" CACHE INTERNAL "" FORCE)
 
+
 link_directories(${ALDE_CTC_CROSS}/boost/lib)
 link_directories(${ALDE_CTC_CROSS}/bzip2/lib)
 link_directories(${ALDE_CTC_CROSS}/ffmpeg/lib)
@@ -269,8 +270,8 @@ if(
   PROJECT_NAME STREQUAL "tf2_ros" OR
   PROJECT_NAME STREQUAL "tf" OR
   PROJECT_NAME STREQUAL "kdl_parser" OR
-  PROJECT_NAME STREQUAL "robot_state_publisher")
-
+  PROJECT_NAME STREQUAL "robot_state_publisher" OR
+  PROJECT_NAME STREQUAL "nodelet")
   set(_link_flags
     "\
     -licudata \
@@ -279,7 +280,8 @@ if(
     "
   )
 elseif(
-  PROJECT_NAME STREQUAL "naoqi_driver"
+  PROJECT_NAME STREQUAL "naoqi_driver" OR
+  PROJECT_NAME STREQUAL "image_proc"
 )
   set(_link_flags
     "\

@@ -19,3 +19,8 @@ repositories:
     type: git
     url: https://github.com/ros/urdfdom.git
     version: 0.4.2
+  uuid:
+    type: git
+    url: https://github.com/certik/uuid.git
+    version: f895102e2ddaf86387a62c3544abb78c0a5cfbae
+
