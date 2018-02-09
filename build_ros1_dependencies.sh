@@ -47,6 +47,7 @@ docker run -it --rm \
         export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
         cd /home/nao/ros1_dependencies_sources && \
         vcs import src < ros1_dependencies.repos && \
+
         mkdir -p /home/nao/ros1_dependencies_sources/build/console_bridge && \
         cd /home/nao/ros1_dependencies_sources/build/console_bridge && \
         cmake \
@@ -56,6 +57,17 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         ../../src/console_bridge && \
         make -j4 install && \
+
+        mkdir -p /home/nao/ros1_dependencies_sources/build/uuid && \
+        cd /home/nao/ros1_dependencies_sources/build/uuid && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        ../../src/uuid && \
+        make -j4 install && \
+
         mkdir -p /home/nao/ros1_dependencies_sources/build/poco && \
         cd /home/nao/ros1_dependencies_sources/build/poco && \
         cmake \

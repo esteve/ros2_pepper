@@ -75,6 +75,10 @@ repositories:
     type: git
     url: https://github.com/ros-gbp/geometry-release.git
     version: 101d5e873ac062ba83c857caa69b1602bac3b977
+  geometry/eigen_conversions:
+    type: git
+    url: https://github.com/ros-gbp/geometry-release.git
+    version: ce045728b7bcf6a9402390e08234d52a62bd198b
   geometry2/tf2:
     type: git
     url: https://github.com/ros-gbp/geometry2-release.git
@@ -299,3 +303,55 @@ repositories:
     type: git
     url: https://github.com/ros-gbp/vision_opencv-release.git
     version: d528ee7b79dcb591c4d5fc946cfc5a3d26b00628
+  vision_opencv/image_geometry:
+    type: git
+    url: https://github.com/ros-gbp/vision_opencv-release.git
+    version: acc2d1208bea76148e820a657a6e55c2a6613b2b
+  rgbd_launch:
+    type: git
+    url: https://github.com/ros-gbp/rgbd_launch-release.git
+    version: 993b172498cf01c7067c952b76a5eaebf538fc1d
+  common_msgs/stereo_msgs:
+    type: git
+    url: https://github.com/ros-gbp/common_msgs-release.git
+    version: 7815043460942a23c805773c2bc256b801a900fb
+  image_pipeline/image_proc:
+    type: git
+    url: https://github.com/ros-gbp/image_pipeline-release.git
+    version: 29aeaf7556e5e36ac08bab7c50c30db3fe5a9701
+  image_pipeline/depth_image_proc:
+    type: git
+    url: https://github.com/ros-gbp/image_pipeline-release.git
+    version: b0ad2028cbd80900a49f3efe76b56fef344685b6
+  dynamic_reconfigure:
+    type: git
+    url: https://github.com/ros-gbp/dynamic_reconfigure-release.git
+    version: 972e59a2368ffd2e734212980c8ef553b837b9aa
+  nodelet_core/nodelet:
+    type: git
+    url: https://github.com/ros-gbp/nodelet_core-release.git
+    version: 99add8314b739a6ba1296a9e6274ed955d87100b
+  nodelet_core/nodelet_topic_tools:
+    type: git
+    url: https://github.com/ros-gbp/nodelet_core-release.git
+    version: 312db26116e5849b6398a53d3da0a2f052eb43f6
+  bond_core/bondcpp:
+    type: git
+    url: https://github.com/ros-gbp/bond_core-release.git
+    version: 2ae094648e4acaf630c796ae5842387c1e5802e2
+  bond_core/bond:
+    type: git
+    url: https://github.com/ros-gbp/bond_core-release.git
+    version: eb6ab018d58c93518abef3824afe4b749cee1395
+  bond_core/smclib:
+    type: git
+    url: https://github.com/ros-gbp/bond_core-release.git
+    version: 8b5f555a86698e43a35cd5e2cd0c59f2ad668d69
+  image_transport_plugins/compressed_depth_image_transport:
+    type: git
+    url: https://github.com/ros-gbp/image_transport_plugins-release.git
+    version: 64c13f8390904fe1e9ef82762c601fb1dae8864f
+  image_transport_plugins/compressed_image_transport:
+    type: git
+    url: https://github.com/ros-gbp/image_transport_plugins-release.git
+    version: 41be5d5e0651842e1c0bf2c2f8c403cacca285ed

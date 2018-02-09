@@ -269,8 +269,8 @@ if(
   PROJECT_NAME STREQUAL "tf2_ros" OR
   PROJECT_NAME STREQUAL "tf" OR
   PROJECT_NAME STREQUAL "kdl_parser" OR
-  PROJECT_NAME STREQUAL "robot_state_publisher")
-
+  PROJECT_NAME STREQUAL "robot_state_publisher" OR
+  PROJECT_NAME STREQUAL "nodelet")
   set(_link_flags
     "\
     -licudata \
@@ -279,7 +279,8 @@ if(
     "
   )
 elseif(
-  PROJECT_NAME STREQUAL "naoqi_driver"
+  PROJECT_NAME STREQUAL "naoqi_driver" OR
+  PROJECT_NAME STREQUAL "image_proc"
 )
   set(_link_flags
     "\
