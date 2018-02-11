@@ -369,8 +369,8 @@ repositories:
     version: fb460efd8007d65e90dc675db7a1bbc2e82ace5d
   ros/rosbash:
     type: git
-    url: https://github.com/ros-gbp/ros-release.git
-    version: 083a1a5663f5b54886b707401c63ad51fc0c4b4a
+    url: https://github.com/fmrico/ros-release.git
+    version: 4ee70fc826dc7e50b5604a63950efee59b9dbfb2
   roslint:
     type: git
     url: https://github.com/ros-gbp/roslint-release.git
