@@ -55,3 +55,7 @@ repositories:
     type: git
     url: https://github.com/fmrico/qhull.git
     version: master
+  uuid:
+    type: git
+    url: https://github.com/certik/uuid.git
+    version: f895102e2ddaf86387a62c3544abb78c0a5cfbae

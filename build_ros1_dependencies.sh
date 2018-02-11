@@ -48,6 +48,7 @@ docker run -it --rm \
         export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
         cd /home/nao/ros1_dependencies_sources && \
         vcs import src < ros1_dependencies.repos && \
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/console_bridge && \
         cd /home/nao/ros1_dependencies_sources/build/console_bridge && \
         cmake \
@@ -57,6 +58,17 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         ../../src/console_bridge && \
         make -j4 install && \
+        \
+        mkdir -p /home/nao/ros1_dependencies_sources/build/uuid && \
+        cd /home/nao/ros1_dependencies_sources/build/uuid && \
+        cmake \
+        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        ../../src/uuid && \
+        make -j4 install && \
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/poco && \
         cd /home/nao/ros1_dependencies_sources/build/poco && \
         cmake \
@@ -67,6 +79,7 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         ../../src/poco && \
         make -j4 install && \
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/urdfdom_headers && \
         cd /home/nao/ros1_dependencies_sources/build/urdfdom_headers && \
         cmake \
@@ -76,6 +89,7 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         ../../src/urdfdom_headers && \
         make -j4 install && \
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/urdfdom && \
         cd /home/nao/ros1_dependencies_sources/build/urdfdom && \
         cmake \
@@ -86,6 +100,7 @@ docker run -it --rm \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/${INSTALL_ROOT}/ros1_dependencies;/home/nao/ctc\" \
         ../../src/urdfdom && \
         make -j4 install && \
+        \
         mkdir -p /home/nao/ros1_dependencies_sources/build/tinyxml2 && \
         cd /home/nao/ros1_dependencies_sources/build/tinyxml2 && \
         cmake \
