@@ -235,7 +235,6 @@ set(TIFF_INCLUDE_DIR "${ALDE_CTC_CROSS}/tiff/include" CACHE INTERNAL "" FORCE)
 set(PNG_LIBRARY "${ALDE_CTC_CROSS}/png/lib/libpng.so" CACHE INTERNAL "" FORCE)
 set(PNG_PNG_INCLUDE_DIR "${ALDE_CTC_CROSS}/png/include" CACHE INTERNAL "" FORCE)
 
-
 link_directories(${ALDE_CTC_CROSS}/boost/lib)
 link_directories(${ALDE_CTC_CROSS}/bzip2/lib)
 link_directories(${ALDE_CTC_CROSS}/ffmpeg/lib)

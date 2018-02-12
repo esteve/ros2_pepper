@@ -51,7 +51,7 @@ docker run -it --rm \
            export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
            cd pepper_ros1_ws && \
            vcs import src < pepper_ros1.repos && \
-	       touch src/orocos_kinematics_dynamics/python_orocos_kdl/CATKIN_IGNORE && \
+           touch src/orocos_kinematics_dynamics/python_orocos_kdl/CATKIN_IGNORE && \
            ./src/catkin/bin/catkin_make_isolated --install --install-space /home/nao/${INSTALL_ROOT}/ros1_inst -DCMAKE_BUILD_TYPE=Release \
            --cmake-args \
            -DWITH_QT=OFF \
