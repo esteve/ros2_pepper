@@ -34,6 +34,7 @@ docker run -it --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \
+  -e INSTALL_ROOT=${INSTALL_ROOT} \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:ro \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host:ro \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}-pepper:ro \
@@ -41,69 +42,15 @@ docker run -it --rm \
   -v ${PWD}/pepper_ros1_ws:/home/nao/pepper_ros1_ws:ro \
   -v ${PWD}/ros1_dependencies_sources:/home/nao/ros1_dependencies_sources:rw \
   -v ${PWD}/${INSTALL_ROOT}/ros1_dependencies:/home/nao/${INSTALL_ROOT}/ros1_dependencies:rw \
+  -v ${PWD}/ros1_dependencies_build_scripts:/home/nao/ros1_dependencies_build_scripts:ro \
   ros1-pepper \
   bash -c "\
-        export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
-        export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
-        cd /home/nao/ros1_dependencies_sources && \
-        vcs import src < ros1_dependencies.repos && \
+    set -eu -o pipefail && \
+    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
+    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+    cd /home/nao/ros1_dependencies_sources && \
+    vcs import src < ros1_dependencies.repos && \
 
-        mkdir -p /home/nao/ros1_dependencies_sources/build/console_bridge && \
-        cd /home/nao/ros1_dependencies_sources/build/console_bridge && \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-        -DALDE_CTC_CROSS=/home/nao/ctc \
-        ../../src/console_bridge && \
-        make -j4 install && \
-
-        mkdir -p /home/nao/ros1_dependencies_sources/build/uuid && \
-        cd /home/nao/ros1_dependencies_sources/build/uuid && \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-        -DALDE_CTC_CROSS=/home/nao/ctc \
-        ../../src/uuid && \
-        make -j4 install && \
-
-        mkdir -p /home/nao/ros1_dependencies_sources/build/poco && \
-        cd /home/nao/ros1_dependencies_sources/build/poco && \
-        cmake \
-        -DWITH_QT=OFF \
-        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-        -DALDE_CTC_CROSS=/home/nao/ctc \
-        ../../src/poco && \
-        make -j4 install && \
-        mkdir -p /home/nao/ros1_dependencies_sources/build/urdfdom_headers && \
-        cd /home/nao/ros1_dependencies_sources/build/urdfdom_headers && \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-        -DALDE_CTC_CROSS=/home/nao/ctc \
-        ../../src/urdfdom_headers && \
-        make -j4 install && \
-        mkdir -p /home/nao/ros1_dependencies_sources/build/urdfdom && \
-        cd /home/nao/ros1_dependencies_sources/build/urdfdom && \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-        -DALDE_CTC_CROSS=/home/nao/ctc \
-        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/${INSTALL_ROOT}/ros1_dependencies;/home/nao/ctc\" \
-        ../../src/urdfdom && \
-        make -j4 install && \
-        mkdir -p /home/nao/ros1_dependencies_sources/build/tinyxml2 && \
-        cd /home/nao/ros1_dependencies_sources/build/tinyxml2 && \
-        cmake \
-        -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-        -DALDE_CTC_CROSS=/home/nao/ctc \
-        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/${INSTALL_ROOT}/ros1_dependencies;/home/nao/ctc\" \
-        ../../src/tinyxml2 && \
-        make -j4 install"
+    for script_file in \$(ls /home/nao/ros1_dependencies_build_scripts/|sort); do
+      /home/nao/ros1_dependencies_build_scripts/\$script_file
+    done"
