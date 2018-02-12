@@ -13,7 +13,6 @@ PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATC
 INSTALL_ROOT=.ros-root
 
 set -euf -o pipefail
-set -xv
 
 if [ -z "$ALDE_CTC_CROSS" ]; then
   echo "Please define the ALDE_CTC_CROSS variable with the path to Aldebaran's Crosscompiler toolchain"
