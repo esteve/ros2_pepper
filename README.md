@@ -75,7 +75,7 @@ $ ./install.sh
 Automatic install script for ros pepper
 Supply peppers hostname or ip address:
 $ <PEPPER_IP>
-Supply roscore hostname or ip address empty for [10.173.104.117]:
+Supply roscore hostname or ip address empty for [<Current machine IP>]:
 $ <ROSCORE_IP/localhost/empty>
 if ssh public keys are not exchanged password will be asked twice
 Password:
