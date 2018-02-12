@@ -20,3 +20,14 @@ RUN apt-get install -y pkg-config
 RUN useradd -ms /bin/bash nao
 WORKDIR /home/nao
 USER nao
+ENV CC /home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc
+ENV CPP /home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp
+ENV CXX /home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++
+ENV RANLIB /home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib
+ENV AR /home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar
+ENV AAL /home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal
+ENV LD /home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld
+ENV READELF /home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf
+ENV CFLAGS -isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot
+ENV CPPFLAGS -I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include
+ENV LDFLAGS -L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib
