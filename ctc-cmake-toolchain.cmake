@@ -284,6 +284,7 @@ link_directories(${ALDE_CTC_CROSS}/vo-amrwbenc/lib)
 link_directories(${ALDE_CTC_CROSS}/vorbis/lib)
 link_directories(${ALDE_CTC_CROSS}/xz_utils/lib)
 link_directories(${ALDE_CTC_CROSS}/zlib/lib)
+link_directories(${ALDE_CTC_CROSS}/bzip2/lib)
 
 include_directories(${ALDE_CTC_CROSS}/bzip2/include)
 include_directories(${ALDE_CTC_CROSS}/eigen3/include)
@@ -374,11 +375,11 @@ elseif(
     "
   )
 elseif(
-  PROJECT_NAME STREQUAL "pcl_ros"
+     PROJECT_NAME STREQUAL "PCL" OR
+     PROJECT_NAME STREQUAL "pcl_ros"
 )
   set(_link_flags
     "\
-    -lpcl_io_ply \
     -lbz2 \
     -lz \
     "

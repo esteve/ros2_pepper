@@ -116,17 +116,6 @@ docker run -it --rm \
         cd /home/nao/ros1_dependencies_sources/src/SDL && \
         ./autogen.sh && \
         cd /home/nao/ros1_dependencies_sources/build/SDL && \
-        CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
-        CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
-        CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
-        RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
-        AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
-        AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
-        LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
-        READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
-        CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
-        CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
-        LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
         ../../src/SDL/configure \
         --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
         --host=i686-aldebaran-linux-gnu \
@@ -137,17 +126,6 @@ docker run -it --rm \
         mkdir -p /home/nao/ros1_dependencies_sources/build/SDL_image && \
         export PATH=$PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/bin && \
         cd /home/nao/ros1_dependencies_sources/build/SDL_image && \
-        CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
-        CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
-        CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
-        RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
-        AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
-        AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
-        LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
-        READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
-        CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
-        CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
-        LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
         ../../src/SDL_image/configure \
         --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
         --host=i686-aldebaran-linux-gnu \
@@ -158,17 +136,6 @@ docker run -it --rm \
         mkdir -p /home/nao/ros1_dependencies_sources/build/hdf5 && \
         export PATH=$PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/bin && \
         cd /home/nao/ros1_dependencies_sources/build/hdf5 && \
-        CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc\
-        CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
-        CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
-        RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
-        AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
-        AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
-        LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
-        READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
-        CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
-        CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
-        LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
         ../../src/hdf5/configure \
         --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
         --host=i686-aldebaran-linux-gnu \
@@ -186,7 +153,7 @@ docker run -it --rm \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
         -BUILD_CPU_DEMOS=OFF \
         -DBUILD_SHARED_LIBS=ON \
-         ../../src/bullet3 && \
+        ../../src/bullet3 && \
         make -j4 install && \
         \
         mkdir -p /home/nao/ros1_dependencies_sources/build/Yaml-cpp && \
@@ -198,7 +165,7 @@ docker run -it --rm \
         -DALDE_CTC_CROSS=/home/nao/ctc \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
         -DBUILD_SHARED_LIBS=ON \
-         ../../src/Yaml-cpp && \
+        ../../src/Yaml-cpp && \
         make -j4 install &&\
         \
         mkdir -p /home/nao/ros1_dependencies_sources/build/eigen3 && \
@@ -211,7 +178,7 @@ docker run -it --rm \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_CXX_COMPILER_ID=GNU \
-         ../../src/eigen3 && \
+        ../../src/eigen3 && \
         make -j4 install &&\
         \
         mkdir -p /home/nao/ros1_dependencies_sources/build/qhull && \
@@ -224,7 +191,7 @@ docker run -it --rm \
         -DCMAKE_FIND_ROOT_PATH=\"/home/nao/ros1_dependencies;/home/nao/ctc\" \
         -DBUILD_SHARED_LIBS=ON \
         -DBUILD_TEST=OFF \
-         ../../src/qhull && \
+        ../../src/qhull && \
         make -j4 install && \
         \
         mkdir -p /home/nao/ros1_dependencies_sources/build/flann && \
@@ -239,7 +206,7 @@ docker run -it --rm \
         -DBUILD_TEST=OFF \
         -DBUILD_PYTHON_BINDINGS=OFF \
         -DBUILD_MATLAB_BINDINGS=OFF \
-         ../../src/flann && \
+        ../../src/flann && \
         make -j4 install && \
         \
         mkdir -p /home/nao/ros1_dependencies_sources/build/pcl && \
@@ -257,6 +224,6 @@ docker run -it --rm \
         -DBUILD_segmentation=ON\
         -DBUILD_surface=ON\
         -Wno-dev \
-         ../../src/pcl && \
+        ../../src/pcl && \
         make -j4 install \
 "
