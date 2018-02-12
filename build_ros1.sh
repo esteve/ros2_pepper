@@ -34,6 +34,7 @@ docker run -it --rm \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
   -e PYTHON2_MINOR_VERSION=${PYTHON2_MINOR_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
+  -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:ro \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host:ro \
@@ -49,6 +50,7 @@ docker run -it --rm \
   bash -c "\
            export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
            export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+           export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
            cd pepper_ros1_ws && \
            vcs import src < pepper_ros1.repos && \
            touch src/orocos_kinematics_dynamics/python_orocos_kdl/CATKIN_IGNORE && \

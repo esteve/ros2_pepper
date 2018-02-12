@@ -39,12 +39,13 @@ docker run -it --rm \
            ../configure \
            --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
            --disable-ipv6 \
+           --enable-unicode=ucs4 \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \
-       export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
-		   make install && \
-       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
-       /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
+           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
+           make install && \
+           wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
+           /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
 
 docker run -it --rm \
   -u $(id -u $USER) \
@@ -76,8 +77,9 @@ docker run -it --rm \
            --build=x86_64-linux \
            --enable-shared \
            --disable-ipv6 \
+           --enable-unicode=ucs4 \
            ac_cv_file__dev_ptmx=yes \
            ac_cv_file__dev_ptc=no && \
-		   make install && \
-       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
-       /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
+           make install && \
+           wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
+           /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
