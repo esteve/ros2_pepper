@@ -22,12 +22,18 @@ fi
 # Get ip address of network interface whereover pepper is available.
 local_ip=$(ip route get $hostname | grep -Po '(?<=src )([0-9]{1,3}.){3}[0-9]{1,3}')
 
+echo "Supply roscore hostname or ip address empty for [$local_ip]:"
+read master_ip
+if [ -z "$master_ip" ]; then
+    master_ip=$local_ip
+fi
 # Set NAO_IP to ip address at which the robot can be reached
-copy_script="sed -e s/NAO_IP=127.0.0.1/NAO_IP=$hostname/g .ros-root/setup_ros1_pepper.bash"
+copy_script="sed -i.bak 's/#export NAO_IP=127.0.0.1/export NAO_IP=$hostname/g' .ros-root/setup_ros1_pepper.bash"
 # Set ROS Master URI to ip of which ros is installed (this most probably will te the ros master)
-copy_script="$copy_script;sed -e s/ROS_MASTER_URI=http://localhost:11311/ROS_MASTER_URI=http://$local_ip:11311/g .ros-root/setup_ros1_pepper.bash "
+copy_script="$copy_script;sed -i.bak 's/\#export ROS_MASTER_URI=http:\/\/localhost:11311/export ROS_MASTER_URI=http:\/\/$master_ip:11311/g' .ros-root/setup_ros1_pepper.bash "
 
-
-echo "scp -R .ros-root nao@$hostname:~/.ros-root"
-
-echo "ssh nao@$hostname $copy_script"
+echo 'if ssh public keys are not exchanged password will be asked twice'
+# Copy .ros-root folder to pepper home folder
+scp -r '.ros-root' nao@$hostname:'~'
+# execute install script inside pepper
+ssh nao@$hostname $copy_script
