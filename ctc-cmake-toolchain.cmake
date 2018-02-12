@@ -375,8 +375,7 @@ elseif(
     "
   )
 elseif(
-     PROJECT_NAME STREQUAL "PCL" OR
-     PROJECT_NAME STREQUAL "pcl_ros"
+     PROJECT_NAME STREQUAL "PCL"
 )
   set(_link_flags
     "\
@@ -384,6 +383,16 @@ elseif(
     -lz \
     "
   )
+ elseif(
+       PROJECT_NAME STREQUAL "pcl_ros"
+  )
+    set(_link_flags
+      "\
+      -lbz2 \
+      -lz \
+      -lpcl_io_ply \
+      "
+    )
 endif()
 
 set(EIGEN3_INCLUDE_DIR ${ALDE_CTC_CROSS}/eigen3/include/eigen3/ CACHE INTERNAL "" FORCE)

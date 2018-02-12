@@ -60,6 +60,17 @@ docker run -it --rm \
            cd Python-${PYTHON2_VERSION}-src/build-pepper && \
            export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
            export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+           CC=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cc \
+           CPP=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-cpp \
+           CXX=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-c++ \
+           RANLIB=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ranlib \
+           AR=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ar \
+           AAL=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-aal \
+           LD=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-ld \
+           READELF=/home/nao/ctc/bin/i686-aldebaran-linux-gnu-readelf \
+           CFLAGS='-isysroot /home/nao/ctc/i686-aldebaran-linux-gnu/sysroot' \
+           CPPFLAGS='-I/home/nao/ctc/zlib/include -I/home/nao/ctc/bzip2/include -I/home/nao/ctc/openssl/include' \
+           LDFLAGS='-L/home/nao/ctc/zlib/lib -L/home/nao/ctc/bzip2/lib -L/home/nao/ctc/openssl/lib' \
            ../configure \
            --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
            --host=i686-aldebaran-linux-gnu \
