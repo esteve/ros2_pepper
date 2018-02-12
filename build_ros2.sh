@@ -30,18 +30,19 @@ docker run -it --rm \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   -v ${PWD}/pepper_ament_ws:/home/nao/pepper_ament_ws \
   ros2-pepper \
-  bash -c "set -euf -o pipefail && \
-           set -xv && \
-           export PATH=/home/nao/Python-${PYTHON3_VERSION}-host/bin:$PATH && \
-           cd pepper_ament_ws && \
-           vcs import src < pepper_ament.repos && \
-           src/ament/ament_tools/scripts/ament.py build \
-	   --isolated \
-	   --parallel \
-           --cmake-args \
-	   -DENABLE_TESTING=OFF \
-           -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON3_VERSION}-host/bin/python3 \
-           --"
+  bash -c "\
+    set -euf -o pipefail && \
+    set -xv && \
+    export PATH=/home/nao/Python-${PYTHON3_VERSION}-host/bin:$PATH && \
+    cd pepper_ament_ws && \
+    vcs import src < pepper_ament.repos && \
+    src/ament/ament_tools/scripts/ament.py build \
+	    --isolated \
+	    --parallel \
+      --cmake-args \
+	      -DENABLE_TESTING=OFF \
+        -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON3_VERSION}-host/bin/python3 \
+      --"
 
 docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
@@ -64,27 +65,27 @@ docker run -it --rm \
   -v ${PWD}/tinyxml2_ws:/home/nao/tinyxml2_ws \
   ros2-pepper \
   bash -c "\
-           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON3_VERSION}/lib && \
-           export PKG_CONFIG_PATH=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/pkgconfig:/home/nao/Python-${PYTHON3_VERSION}-pepper/lib/pkgconfig:/home/nao/console_bridge_ws/install/lib/pkgconfig:/home/nao/poco_ws/install/lib/pkgconfig:/home/nao/pepper_ros1_ws/install_isolated/lib/pkgconfig:/home/nao/urdfdom_headers_ws/install/lib/pkgconfig:/home/nao/urdfdom_ws/install/lib/pkgconfig:/home/nao/tinyxml2_ws/install/lib/pkgconfig:/home/nao/opencv2/lib/pkgconfig && \
-           export ALDE_CTC_CROSS=/home/nao/ctc && \
-           export PATH=/home/nao/Python-${PYTHON3_VERSION}/bin:$PATH && \
-           source /home/nao/pepper_ament_ws/install_isolated/local_setup.bash && \
-           cd pepper_ros2_ws && \
-           vcs import src < pepper_ros2.repos && \
-          ament build \
-	   --isolated \
-	   --parallel \
-           --cmake-args \
-           -Dorocos_kdl_DIR=/home/nao/pepper_ros1_ws/install_isolated/share/orocos_kdl \
-           -Dnaoqi_libqi_DIR=/home/nao/pepper_ros1_ws/install_isolated/share/naoqi_libqi/cmake \
-           -Dnaoqi_libqicore_DIR=/home/nao/pepper_ros1_ws/install_isolated/share/naoqi_libqicore/cmake \
-           -DCATKIN_ENABLE_TESTING=OFF \
-	   -DENABLE_TESTING=OFF \
-           -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON3_VERSION}/bin/python3 \
-           -DPYTHON2_LIBRARY=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/libpython${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.so \
-           -DPYTHON_LIBRARY=/home/nao/Python-${PYTHON3_VERSION}-pepper/lib/libpython${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}m.so \
-           -DTHIRDPARTY=ON \
-           -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros2_ws/ctc-cmake-toolchain.cmake \
-           -DALDE_CTC_CROSS=/home/nao/ctc \
-           -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON3_VERSION}-pepper;/home/nao/poco_ws/install;/home/nao/console_bridge_ws/install;/home/nao/urdfdom_headers_ws/install;/home/nao/urdfdom_ws/install;/home/nao/pepper_ament_ws/install_isolated;/home/nao/pepper_ros2_ws/install_isolated;/home/nao/pepper_ros2_ws/src/eProsima/Fast-RTPS/thirdparty;/home/nao/ctc\" \
-           --"
+    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON3_VERSION}/lib && \
+    export PKG_CONFIG_PATH=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/pkgconfig:/home/nao/Python-${PYTHON3_VERSION}-pepper/lib/pkgconfig:/home/nao/console_bridge_ws/install/lib/pkgconfig:/home/nao/poco_ws/install/lib/pkgconfig:/home/nao/pepper_ros1_ws/install_isolated/lib/pkgconfig:/home/nao/urdfdom_headers_ws/install/lib/pkgconfig:/home/nao/urdfdom_ws/install/lib/pkgconfig:/home/nao/tinyxml2_ws/install/lib/pkgconfig:/home/nao/opencv2/lib/pkgconfig && \
+    export ALDE_CTC_CROSS=/home/nao/ctc && \
+    export PATH=/home/nao/Python-${PYTHON3_VERSION}/bin:$PATH && \
+    source /home/nao/pepper_ament_ws/install_isolated/local_setup.bash && \
+    cd pepper_ros2_ws && \
+    vcs import src < pepper_ros2.repos && \
+    ament build \
+	    --isolated \
+	    --parallel \
+      --cmake-args \
+        -Dorocos_kdl_DIR=/home/nao/pepper_ros1_ws/install_isolated/share/orocos_kdl \
+        -Dnaoqi_libqi_DIR=/home/nao/pepper_ros1_ws/install_isolated/share/naoqi_libqi/cmake \
+        -Dnaoqi_libqicore_DIR=/home/nao/pepper_ros1_ws/install_isolated/share/naoqi_libqicore/cmake \
+        -DCATKIN_ENABLE_TESTING=OFF \
+	      -DENABLE_TESTING=OFF \
+        -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON3_VERSION}/bin/python3 \
+        -DPYTHON2_LIBRARY=/home/nao/Python-${PYTHON2_VERSION}-pepper/lib/libpython${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.so \
+        -DPYTHON_LIBRARY=/home/nao/Python-${PYTHON3_VERSION}-pepper/lib/libpython${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}m.so \
+        -DTHIRDPARTY=ON \
+        -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros2_ws/ctc-cmake-toolchain.cmake \
+        -DALDE_CTC_CROSS=/home/nao/ctc \
+        -DCMAKE_FIND_ROOT_PATH=\"/home/nao/Python-${PYTHON3_VERSION}-pepper;/home/nao/poco_ws/install;/home/nao/console_bridge_ws/install;/home/nao/urdfdom_headers_ws/install;/home/nao/urdfdom_ws/install;/home/nao/pepper_ament_ws/install_isolated;/home/nao/pepper_ros2_ws/install_isolated;/home/nao/pepper_ros2_ws/src/eProsima/Fast-RTPS/thirdparty;/home/nao/ctc\" \
+      --"

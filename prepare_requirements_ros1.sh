@@ -41,21 +41,22 @@ docker run -it --rm \
   -e CPPFLAGS \
   -e LDFLAGS \
   ros1-pepper \
-  bash -c "set -euf -o pipefail && \
-           set -xv && \
-           ls -Z && \
-           mkdir -p Python-${PYTHON2_VERSION}-src/build-host && \
-           cd Python-${PYTHON2_VERSION}-src/build-host && \
-           export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
-           ../configure \
-           --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
-           --disable-ipv6 \
-           ac_cv_file__dev_ptmx=yes \
-           ac_cv_file__dev_ptc=no && \
-       export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
-		   make -j4 install && \
-       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
-       /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
+  bash -c "\
+    set -euf -o pipefail && \
+    set -xv && \
+    ls -Z && \
+    mkdir -p Python-${PYTHON2_VERSION}-src/build-host && \
+    cd Python-${PYTHON2_VERSION}-src/build-host && \
+    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+    ../configure \
+      --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
+      --disable-ipv6 \
+      ac_cv_file__dev_ptmx=yes \
+      ac_cv_file__dev_ptc=no && \
+    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
+    make -j4 install && \
+    wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
+    /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
 
 docker run -it --rm \
   -u $(id -u $USER) \
@@ -64,20 +65,21 @@ docker run -it --rm \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   ros1-pepper \
-  bash -c "set -euf -o pipefail && \
-           set -xv && \
-           mkdir -p Python-${PYTHON2_VERSION}-src/build-pepper && \
-           cd Python-${PYTHON2_VERSION}-src/build-pepper && \
-           export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
-           export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
-           ../configure \
-           --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
-           --host=i686-aldebaran-linux-gnu \
-           --build=x86_64-linux \
-           --enable-shared \
-           --disable-ipv6 \
-           ac_cv_file__dev_ptmx=yes \
-           ac_cv_file__dev_ptc=no && \
-		   make -j4 install && \
-       wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
-       /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
+  bash -c "\
+    set -euf -o pipefail && \
+    set -xv && \
+    mkdir -p Python-${PYTHON2_VERSION}-src/build-pepper && \
+    cd Python-${PYTHON2_VERSION}-src/build-pepper && \
+    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
+    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+    ../configure \
+      --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
+      --host=i686-aldebaran-linux-gnu \
+      --build=x86_64-linux \
+      --enable-shared \
+      --disable-ipv6 \
+      ac_cv_file__dev_ptmx=yes \
+      ac_cv_file__dev_ptc=no && \
+    make -j4 install && \
+    wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
+    /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
