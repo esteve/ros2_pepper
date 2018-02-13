@@ -1,4 +1,8 @@
 repositories:
+  bullet3:
+    type: git
+    url: https://github.com/bulletphysics/bullet3.git
+    version: 19f999ac087e68ffc2551ffb73e35e60271a0d27
   console_bridge:
     type: git
     url: https://github.com/ros/console_bridge.git
