@@ -35,4 +35,7 @@ repositories:
     type: git
     url: https://github.com/certik/uuid.git
     version: f895102e2ddaf86387a62c3544abb78c0a5cfbae
-
+  yaml-cpp:
+    type: git
+    url: https://github.com/jbeder/yaml-cpp.git
+    version: 998d7bf31e1bab4e45221c28fad8e00ddcf8855e
