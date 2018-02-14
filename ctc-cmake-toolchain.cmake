@@ -24,6 +24,11 @@ if(" " STREQUAL "${ALDE_CTC_CROSS} ")
   message(FATAL_ERROR "Please define the ALDE_CTC_CROSS variable to the path of Aldebaran's Crosscompiler toolchain")
 endif()
 
+set(INSTALL_ROOT $ENV{INSTALL_ROOT})
+if(" " STREQUAL "${INSTALL_ROOT} ")
+    set(INSTALL_ROOT ".ros-root")
+endif()
+
 set(ALDE_CTC_SYSROOT "${ALDE_CTC_CROSS}/${TARGET_TUPLE}/sysroot")
 
 set(ROS2_PEPPER $ENV{ROS2_PEPPER})
@@ -235,6 +240,14 @@ set(TIFF_INCLUDE_DIR "${ALDE_CTC_CROSS}/tiff/include" CACHE INTERNAL "" FORCE)
 set(PNG_LIBRARY "${ALDE_CTC_CROSS}/png/lib/libpng.so" CACHE INTERNAL "" FORCE)
 set(PNG_PNG_INCLUDE_DIR "${ALDE_CTC_CROSS}/png/include" CACHE INTERNAL "" FORCE)
 
+set(EIGEN_INCLUDE_DIR "${ALDE_CTC_CROSS}/eigen3/include/eigen3" CACHE INTERNAL "" FORCE)
+
+set(FLANN_LIBRARY "/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/libflann.so" CACHE INTERNAL "" FORCE)
+set(FLANN_INCLUDE_DIR "/home/nao/${INSTALL_ROOT}/ros1_dependencies/include" CACHE INTERNAL "" FORCE)
+
+set(QHULL_LIBRARY "/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/liblibqhull.so" CACHE INTERNAL "" FORCE)
+set(QHULL_INCLUDE_DIR "/home/nao/${INSTALL_ROOT}/ros1_dependencies/include" CACHE INTERNAL "" FORCE)
+
 link_directories(${ALDE_CTC_CROSS}/boost/lib)
 link_directories(${ALDE_CTC_CROSS}/bzip2/lib)
 link_directories(${ALDE_CTC_CROSS}/ffmpeg/lib)
@@ -322,6 +335,15 @@ elseif(
     -lz \
     "
   )
+  elseif(
+       PROJECT_NAME STREQUAL "PCL"
+  )
+    set(_link_flags
+      "\
+      -lbz2 \
+      -lz \
+      "
+    )
 endif()
 
 set(EIGEN3_INCLUDE_DIR ${ALDE_CTC_CROSS}/eigen3/include/eigen3/ CACHE INTERNAL "" FORCE)
