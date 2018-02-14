@@ -62,7 +62,32 @@ By now you should have the following in the current directory:
 - A ROS workspace with ROS Kinetic built for Pepper (pepper\_ros1\_ws)
 - A helper script that will set up the ROS workspace in the robot
 
-We're going to copy these to the robot, assuming that your robot is connected to your network, type the following:
+We're going to copy these to the robot, assuming that your robot is connected to your network
+
+#### Option 1 (automatic):
+
+Running the following script will install .ros-root folder into /home/nao/.ros-root.
+
+Afterwards it will set NAO_IP to the ip address used to access pepper for scp & ssh And it will set ROS_MASTER_URI to the ip address of the machine that is used to install the .ros-root folder into pepper unless specified otherwise.
+
+```
+$ ./install.sh
+Automatic install script for ros pepper
+Supply peppers hostname or ip address:
+$ <PEPPER_IP>
+Supply roscore hostname or ip address empty for [<Current machine IP>]:
+$ <ROSCORE_IP/localhost/empty>
+if ssh public keys are not exchanged password will be asked twice
+Password:
+$ <Pepper user password>
+<Many lines of scp output>
+Password:
+$ <Pepper user password>
+```
+
+#### Option 2 (Manual)
+
+type the following:
 
 *Make sure you copy Python to the directory Python-2.7.13, without -pepper*
 
