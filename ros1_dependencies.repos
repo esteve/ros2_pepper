@@ -11,6 +11,10 @@ repositories:
     type: git
     url: https://github.com/mariusmuja/flann.git
     version: master
+  pcl:
+    type: git
+    url: https://github.com/PointCloudLibrary/pcl.git
+    version: master
   poco:
     type: git
     url: https://github.com/pocoproject/poco.git
