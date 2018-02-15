@@ -322,6 +322,15 @@ elseif(
     -lz \
     "
   )
+  elseif(
+        PROJECT_NAME STREQUAL "PCL"
+)
+  set(_link_flags
+    "\
+    -lbz2 \
+    -lz \
+    "
+  )
 endif()
 
 set(EIGEN3_INCLUDE_DIR ${ALDE_CTC_CROSS}/eigen3/include/eigen3/ CACHE INTERNAL "" FORCE)
