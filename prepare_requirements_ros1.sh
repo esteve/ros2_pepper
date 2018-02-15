@@ -6,11 +6,6 @@ PYTHON2_VERSION=2.7.13
 
 INSTALL_ROOT=.ros-root
 
-if [ -z "$ALDE_CTC_CROSS" ]; then
-  echo "Please define the ALDE_CTC_CROSS variable with the path to Aldebaran's Crosscompiler toolchain"
-  exit 1
-fi
-
 docker build -t ros1-pepper -f docker/Dockerfile_ros1 docker/
 
 if [ ! -e "Python-${PYTHON2_VERSION}.tar.xz" ]; then
@@ -26,7 +21,6 @@ docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
-  -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   -e CC \
   -e CPP \
   -e CXX \
@@ -59,7 +53,6 @@ docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
-  -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   ros1-pepper \
   bash -c "\
     set -euf -o pipefail && \

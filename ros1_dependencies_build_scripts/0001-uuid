@@ -6,6 +6,5 @@ cmake \
   -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
-  -DALDE_CTC_CROSS=/home/nao/ctc \
   ../../src/uuid
 make -j4 install
