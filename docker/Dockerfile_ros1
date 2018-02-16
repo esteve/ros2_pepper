@@ -4,17 +4,12 @@ MAINTAINER esteve@apache.org
 
 ENV NAO_HOME /home/nao
 
-ARG CTC_VERSION
-ENV CTC_VERSION ${CTC_VERSION:-2.5.2.74}
-
 ARG ALDE_CTC_CROSS
 ENV ALDE_CTC_CROSS ${ALDE_CTC_CROSS:-${NAO_HOME}/ctc}
 
-ARG CTC_URL
-ENV CTC_URL ${CTC_URL:-https://community-static.aldebaran.com/resources/2.5.5/ctc/ctc-linux64-atom-${CTC_VERSION}.zip}
-
 ARG KEY_SRV
 ENV KEY_SRV ${KEY_SRV:-hkp://keyserver.ubuntu.com:80}
+#ENV KEY_SRV ${KEY_SRV:-hkps.pool.sks-keyservers.net}
 
 ARG KEY_UUID
 ENV KEY_UUID ${KEY_UUID:-421C365BD9FF1F717815A3895523BAEEB01FA116}
@@ -42,7 +37,7 @@ RUN apt-get install -y --no-install-recommends \
         git \
         libssl-dev \
         wget \
-	unzip \
+	    unzip \
         zlib1g-dev \
     && apt-get install -y \
         python-rosdep \
@@ -56,11 +51,6 @@ RUN apt-get install -y --no-install-recommends \
 RUN useradd -ms /bin/bash nao
 WORKDIR /home/nao
 USER nao
-
-RUN wget -O /tmp/ctc-linux64-atom-$CTC_VERSION.zip $CTC_URL \
-    && unzip /tmp/ctc-linux64-atom-$CTC_VERSION.zip -d /tmp \
-    && mv /tmp/ctc-linux64-atom-$CTC_VERSION $ALDE_CTC_CROSS \ 
-    && rm /tmp/ctc-linux64-atom-$CTC_VERSION.zip
 
 ENV CC $ALDE_CTC_CROSS/bin/i686-aldebaran-linux-gnu-cc
 ENV CPP $ALDE_CTC_CROSS/bin/i686-aldebaran-linux-gnu-cpp

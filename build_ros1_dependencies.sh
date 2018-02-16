@@ -14,6 +14,11 @@ INSTALL_ROOT=.ros-root
 
 set -euf -o pipefail
 
+if [ -z "$ALDE_CTC_CROSS" ]; then
+    echo "Please define the ALDE_CTC_CROSS variable with the path to Aldebaran's Crosscompiler toolchain"
+    exit 1
+fi
+
 mkdir -p pepper_ros1_ws/cmake
 mkdir -p pepper_ros1_ws/src
 cp pepper_ros1.repos pepper_ros1_ws/
@@ -31,6 +36,7 @@ docker run -it --rm \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:ro \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host:ro \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}-pepper:ro \
+  -v ${ALDE_CTC_CROSS}:/home/nao/ctc:ro \
   -v ${PWD}/pepper_ros1_ws:/home/nao/pepper_ros1_ws:ro \
   -v ${PWD}/ros1_dependencies_sources:/home/nao/ros1_dependencies_sources:rw \
   -v ${PWD}/${INSTALL_ROOT}/ros1_dependencies:/home/nao/${INSTALL_ROOT}/ros1_dependencies:rw \
