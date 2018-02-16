@@ -8,8 +8,8 @@ ARG ALDE_CTC_CROSS
 ENV ALDE_CTC_CROSS ${ALDE_CTC_CROSS:-${NAO_HOME}/ctc}
 
 ARG KEY_SRV
-ENV KEY_SRV ${KEY_SRV:-hkp://keyserver.ubuntu.com:80}
-#ENV KEY_SRV ${KEY_SRV:-hkps.pool.sks-keyservers.net}
+#ENV KEY_SRV ${KEY_SRV:-hkp://keyserver.ubuntu.com:80}
+ENV KEY_SRV ${KEY_SRV:-hkps.pool.sks-keyservers.net}
 
 ARG KEY_UUID
 ENV KEY_UUID ${KEY_UUID:-421C365BD9FF1F717815A3895523BAEEB01FA116}
