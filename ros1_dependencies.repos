@@ -39,3 +39,7 @@ repositories:
     type: git
     url: https://github.com/jbeder/yaml-cpp.git
     version: 998d7bf31e1bab4e45221c28fad8e00ddcf8855e
+  openssl:
+    type: git
+    url: https://github.com/openssl/openssl.git
+    version: 4ac0329582829f5378d8078c8d314ad37db87736

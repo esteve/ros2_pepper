@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euf -o pipefail
+cd /home/nao/ros1_dependencies_sources/src/openssl
+  MACHINE=i686 \
+  RELEASE=4.0.4-rt1-aldebaran-rt \
+  SYSTEM=Linux \
+  BUILD='#1 SMP PREEMPT RT Mon Oct 3 19:22:50 Local time zone must be set' \
+./config 386 -m32 shared no-sse2 \
+  --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies --openssldir=/home/nao/openssl
+make -j4
+make install
