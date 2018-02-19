@@ -15,6 +15,10 @@ repositories:
     type: git
     url: https://github.com/pocoproject/poco.git
     version: poco-1.7.8p3-release
+  qhull:
+    type: git
+    url: https://github.com/qhull/qhull.git
+    version: 5a79a0009454c86e9848646b3c296009125231bf
   SDL:
     type: git
     url: https://github.com/SDL-mirror/SDL.git

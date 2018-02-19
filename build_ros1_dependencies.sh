@@ -47,6 +47,7 @@ docker run -it --rm \
     set -eu -o pipefail && \
     export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
     export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+    export PKG_CONFIG_PATH=/home/nao/${INSTALL_ROOT}/ros1_dependencies/lib/pkgconfig && \
     cd /home/nao/ros1_dependencies_sources && \
     vcs import src < ros1_dependencies.repos && \
 
