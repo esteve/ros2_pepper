@@ -7,6 +7,10 @@ repositories:
     type: git
     url: https://github.com/ros/console_bridge.git
     version: 8c3c62501bf8521dcf53705b497ea982b874c25d
+  flann:
+    type: git
+    url: https://github.com/mariusmuja/flann.git
+    version: master
   poco:
     type: git
     url: https://github.com/pocoproject/poco.git
