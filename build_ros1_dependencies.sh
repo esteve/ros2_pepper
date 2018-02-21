@@ -12,6 +12,9 @@ PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATC
 
 INSTALL_ROOT=.ros-root
 
+USE_TTY=""
+test -t 1 && USE_TTY="-t"
+
 set -euf -o pipefail
 
 if [ -z "$ALDE_CTC_CROSS" ]; then
@@ -29,7 +32,7 @@ mkdir -p ${INSTALL_ROOT}/ros1_dependencies
 mkdir -p ros1_dependencies_sources/src
 cp ros1_dependencies.repos ros1_dependencies_sources/
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \

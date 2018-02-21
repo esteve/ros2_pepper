@@ -10,6 +10,9 @@ PYTHON3_PATCH_VERSION=1
 PYTHON2_VERSION=${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.${PYTHON2_PATCH_VERSION}
 PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATCH_VERSION}
 
+USE_TTY=""
+test -t 1 && USE_TTY="-t"
+
 set -euf -o pipefail
 set -xv
 
@@ -24,7 +27,7 @@ cp pepper_ament.repos pepper_ament_ws/
 cp pepper_ros2.repos pepper_ros2_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros2_ws/
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -v ${PWD}/Python-${PYTHON3_VERSION}-host:/home/nao/Python-${PYTHON3_VERSION}-host \
   -v ${PWD}/Python-${PYTHON3_VERSION}-pepper:/home/nao/Python-${PYTHON3_VERSION}-pepper \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
@@ -44,7 +47,7 @@ docker run -it --rm \
         -DPYTHON_EXECUTABLE=/home/nao/Python-${PYTHON3_VERSION}-host/bin/python3 \
       --"
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \

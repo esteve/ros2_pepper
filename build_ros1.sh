@@ -12,6 +12,9 @@ PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATC
 
 INSTALL_ROOT=.ros-root
 
+USE_TTY=""
+test -t 1 && USE_TTY="-t"
+
 set -euf -o pipefail
 
 if [ -z "$ALDE_CTC_CROSS" ]; then
@@ -27,7 +30,7 @@ cp pepper_ros1.repos pepper_ros1_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros1_ws/
 cp cmake/eigen3-config.cmake pepper_ros1_ws/cmake/
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euf -o pipefail
-
 PYTHON2_VERSION=2.7.13
 
 INSTALL_ROOT=.ros-root
@@ -13,15 +11,18 @@ fi
 
 docker build -t ros1-pepper -f docker/Dockerfile_ros1 docker/
 
+USE_TTY=""
+test -t 1 && USE_TTY="-t"
+
 if [ ! -e "Python-${PYTHON2_VERSION}.tar.xz" ]; then
-  wget -cN https://www.python.org/ftp/python/$PYTHON2_VERSION/Python-${PYTHON2_VERSION}.tar.xz
-  tar xvf Python-${PYTHON2_VERSION}.tar.xz
+  wget -q -cN https://www.python.org/ftp/python/$PYTHON2_VERSION/Python-${PYTHON2_VERSION}.tar.xz
+  tar xf Python-${PYTHON2_VERSION}.tar.xz
 fi
 
 mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
@@ -54,7 +55,7 @@ docker run -it --rm \
     wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
     /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \

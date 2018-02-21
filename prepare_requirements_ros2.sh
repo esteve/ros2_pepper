@@ -13,6 +13,9 @@ fi
 
 docker build -t ros2-pepper -f docker/Dockerfile_ros2 docker/
 
+USE_TTY=""
+test -t 1 && USE_TTY="-t"
+
 if [ ! -e "Python-${PYTHON3_VERSION}.tar.xz" ]; then
   wget -cN https://www.python.org/ftp/python/$PYTHON3_VERSION/Python-${PYTHON3_VERSION}.tar.xz
 fi
@@ -24,7 +27,7 @@ fi
 mkdir -p ${PWD}/Python-${PYTHON3_VERSION}-pepper
 mkdir -p ${PWD}/Python-${PYTHON3_VERSION}-host
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -v ${PWD}/Python-${PYTHON3_VERSION}:/home/nao/Python-${PYTHON3_VERSION}-src \
   -v ${PWD}/Python-${PYTHON3_VERSION}-host:/home/nao/Python-${PYTHON3_VERSION}-host \
   ros2-pepper \
@@ -40,7 +43,7 @@ docker run -it --rm \
        wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/Python-${PYTHON3_VERSION}-host/bin/python3 && \
 		   /home/nao/Python-${PYTHON3_VERSION}-host/bin/pip3 install empy catkin-pkg setuptools vcstool pyparsing"
 
-docker run -it --rm \
+docker run ${USE_TTY} -i --rm \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -v ${PWD}/Python-${PYTHON3_VERSION}:/home/nao/Python-${PYTHON3_VERSION}-src \
   -v ${PWD}/Python-${PYTHON3_VERSION}-host:/home/nao/Python-${PYTHON3_VERSION}-host \

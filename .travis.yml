@@ -1,0 +1,18 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+- wget -O ctc.zip -q "$ALDE_CTC_URL"
+- unzip -q ctc.zip
+- pwd
+- echo "Preparing ROS1 requirements"
+- ./prepare_requirements_ros1.log
+- echo "Building ROS1 dependencies"
+- travis_wait 30 sh -c "./build_ros1_dependencies.sh > build_ros1_dependencies.log 2>&1"
+- echo "Building ROS1"
+- travis_wait 30 sh -c "./build_ros1.sh > build_ros1.log 2>&1"
+- echo "DONE"
