@@ -70,7 +70,7 @@ docker run ${USE_TTY} -i --rm \
     cd Python-${PYTHON2_VERSION}-src/build-pepper && \
     export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
     export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
-    find \
+    find && \
     ../configure \
       --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
       --host=i686-aldebaran-linux-gnu \
