@@ -42,6 +42,7 @@ docker run ${USE_TTY} -i --rm \
   ros1-pepper \
   bash -c "\
     set -euf -o pipefail && \
+    set -xv && \
     mkdir -p Python-${PYTHON2_VERSION}-src/build-host && \
     cd Python-${PYTHON2_VERSION}-src/build-host && \
     export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
@@ -64,6 +65,7 @@ docker run ${USE_TTY} -i --rm \
   ros1-pepper \
   bash -c "\
     set -euf -o pipefail && \
+    set -xv && \
     mkdir -p Python-${PYTHON2_VERSION}-src/build-pepper && \
     cd Python-${PYTHON2_VERSION}-src/build-pepper && \
     export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
