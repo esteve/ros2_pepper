@@ -2,4 +2,4 @@ repositories:
   urdfdom:
     type: git
     url: https://github.com/ros/urdfdom.git
-    version: 0.4.2
+    version: be20424d62d34b28433c04406d595c6348741d75
