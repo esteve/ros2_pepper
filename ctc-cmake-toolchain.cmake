@@ -191,6 +191,7 @@ set(_library_dirs
   -L${ALDE_CTC_CROSS}/tiff/lib \
   -L${ALDE_CTC_CROSS}/zlib/lib \
   -L${ALDE_CTC_CROSS}/xz_utils/lib \
+  -L${ALDE_CTC_CROSS}/openssl/lib \
   "
 )
 
@@ -255,6 +256,7 @@ link_directories(${ALDE_CTC_CROSS}/vo-amrwbenc/lib)
 link_directories(${ALDE_CTC_CROSS}/vorbis/lib)
 link_directories(${ALDE_CTC_CROSS}/xz_utils/lib)
 link_directories(${ALDE_CTC_CROSS}/zlib/lib)
+link_directories(${ALDE_CTC_CROSS}/openssl/lib)
 
 set(_link_flags "")
 
@@ -328,6 +330,16 @@ elseif(
   set(_link_flags
     "\
     -lbz2 \
+    -lz \
+    "
+  )
+  elseif(
+        PROJECT_NAME STREQUAL "rosauth"
+)
+  include_directories(${ALDE_CTC_CROSS}/openssl/include)
+  set(_link_flags
+    "\
+    -lcrypto \
     -lz \
     "
   )
