@@ -20,8 +20,8 @@ fi
 
 mkdir -p pepper_ament_ws/src
 mkdir -p pepper_ros2_ws/src
-cp pepper_ament.repos pepper_ament_ws/
-cp pepper_ros2.repos pepper_ros2_ws/
+cp repos/pepper_ament.repos pepper_ament_ws/
+cp repos/pepper_ros2.repos pepper_ros2_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros2_ws/
 
 docker run -it --rm \

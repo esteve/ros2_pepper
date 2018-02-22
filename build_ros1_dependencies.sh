@@ -21,13 +21,13 @@ fi
 
 mkdir -p pepper_ros1_ws/cmake
 mkdir -p pepper_ros1_ws/src
-cp pepper_ros1.repos pepper_ros1_ws/
+cp repos/pepper_ros1.repos pepper_ros1_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros1_ws/
 cp cmake/eigen3-config.cmake pepper_ros1_ws/cmake/
 
 mkdir -p ${INSTALL_ROOT}/ros1_dependencies
 mkdir -p ros1_dependencies_sources/src
-cp ros1_dependencies.repos ros1_dependencies_sources/
+cp repos/ros1_dependencies.repos ros1_dependencies_sources/
 
 docker run -it --rm \
   -u $(id -u $USER) \
