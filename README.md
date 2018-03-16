@@ -2,6 +2,23 @@
 
 This project contains a set of patches and scripts to compile and run ROS 1 ROS 2 from within a Pepper robot, without the need of a tethered computer.
 
+These scripts include:
+* ROS1 working onboard
+* Naoqi_driver fully working (access to sensors, actuators, transform
+* Pepper_robot fully working (PointCloud)
+
+It is NOT included in this project (which is available at www.inrobots.es):
+* Script to build a custom workspace
+* Navigation
+* ROSPlan
+* Sensors (lasercan and PointClud) corrected
+* System of launch at startup and resources (CPU, MEM) monitoring.
+
+[![Watch the video](http://gsyc.urjc.es/~fmartin/pepper.png)](https://www.youtube.com/watch?v=0wIWJHMchaU&t=2s)
+
+
+
+
 ## Pre-requirements:
 
 Download and extract the [NaoQi C++ framework](http://doc.aldebaran.com/2-5/index_dev_guide.html) and Softbanks's crosstool chain and point the `AL_DIR` and `ALDE_CTC_CROSS` environment variables to their respective paths:
