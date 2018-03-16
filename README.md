@@ -92,4 +92,10 @@ $ source .ros-root/setup_ros1_pepper.bash
 $ roslaunch naoqi_driver naoqi_driver.launch nao_ip:=IP_ADDRESS_OF_YOUR_ROBOT roscore_ip:=IP_ADDRESS_OF_YOUR_ROBOT network_interface:=NETWORK_ITERFACE
 ```
 
+### Demos
+
+The folks at the [Universidad Rey Juan Carlos](http://robotica.gsyc.es/) and [Intelligent Robotics](http://inrobots.es/) have produced the following video showing a Pepper robot runnning ROS onboard using the code from this repository:
+
+[![Pepper Navigation](http://img.youtube.com/vi/0wIWJHMchaU/0.jpg)](https://www.youtube.com/watch?v=0wIWJHMchaU "Pepper Navigation")
+
 Enjoy!
