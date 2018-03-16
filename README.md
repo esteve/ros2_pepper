@@ -89,7 +89,8 @@ $ source .ros-root/setup_ros1_pepper.bash
 *Start naoqi_driver, note that NETWORK\_INTERFACE may be either wlan0 or eth0, pick the appropriate interface if your robot is connected via wifi or ethernet*
 
 ```
-$ roslaunch naoqi_driver naoqi_driver.launch nao_ip:=IP_ADDRESS_OF_YOUR_ROBOT roscore_ip:=IP_ADDRESS_OF_YOUR_ROBOT network_interface:=NETWORK_ITERFACE
+$ roslaunch naoqi_driver naoqi_driver.launch nao_ip:=IP_ADDRESS_OF_YOUR_ROBOT \
+    roscore_ip:=IP_ADDRESS_OF_YOUR_ROBOT network_interface:=NETWORK_INTERFACE
 ```
 
 ### Demos
