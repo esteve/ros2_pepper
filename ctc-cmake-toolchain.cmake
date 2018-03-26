@@ -324,8 +324,8 @@ elseif(
     -lz \
     "
   )
-  elseif(
-        PROJECT_NAME STREQUAL "PCL"
+elseif(
+  PROJECT_NAME STREQUAL "PCL"
 )
   set(_link_flags
     "\
@@ -333,8 +333,8 @@ elseif(
     -lz \
     "
   )
-  elseif(
-        PROJECT_NAME STREQUAL "rosauth"
+elseif(
+  PROJECT_NAME STREQUAL "rosauth"
 )
   set(_link_flags
     "\
