@@ -47,6 +47,7 @@ docker run -it --rm \
     export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:\${PATH} && \
     ../configure \
       --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
+      --enable-shared \
       --disable-ipv6 \
       ac_cv_file__dev_ptmx=yes \
       ac_cv_file__dev_ptc=no && \
