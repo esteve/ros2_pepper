@@ -44,7 +44,7 @@ docker run -it --rm \
     set -euf -o pipefail && \
     mkdir -p Python-${PYTHON2_VERSION}-src/build-host && \
     cd Python-${PYTHON2_VERSION}-src/build-host && \
-    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:\${PATH} && \
     ../configure \
       --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
       --disable-ipv6 \
@@ -68,7 +68,7 @@ docker run -it --rm \
     mkdir -p Python-${PYTHON2_VERSION}-src/build-pepper && \
     cd Python-${PYTHON2_VERSION}-src/build-pepper && \
     export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
-    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:$PATH && \
+    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:\${PATH} && \
     ../configure \
       --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
       --host=i686-aldebaran-linux-gnu \
