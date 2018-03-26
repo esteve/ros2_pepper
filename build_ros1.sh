@@ -29,6 +29,7 @@ cp cmake/eigen3-config.cmake pepper_ros1_ws/cmake/
 
 docker run -it --rm \
   -u $(id -u $USER) \
+  -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
   -e PYTHON2_MINOR_VERSION=${PYTHON2_MINOR_VERSION} \
