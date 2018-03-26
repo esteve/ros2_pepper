@@ -336,7 +336,6 @@ elseif(
   elseif(
         PROJECT_NAME STREQUAL "rosauth"
 )
-  include_directories(${ALDE_CTC_CROSS}/openssl/include)
   set(_link_flags
     "\
     -lcrypto \

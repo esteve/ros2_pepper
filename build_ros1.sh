@@ -56,6 +56,7 @@ docker run -it --rm \
     touch src/orocos_kinematics_dynamics/python_orocos_kdl/CATKIN_IGNORE && \
     ./src/catkin/bin/catkin_make_isolated --install --install-space /home/nao/${INSTALL_ROOT}/ros1_inst -DCMAKE_BUILD_TYPE=Release \
     --cmake-args \
+      -DOPENSSL_ROOT_DIR=/home/nao/ctc/openssl \
       -DWITH_QT=OFF \
       -DSETUPTOOLS_DEB_LAYOUT=OFF \
       -DCATKIN_ENABLE_TESTING=OFF \

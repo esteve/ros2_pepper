@@ -357,5 +357,5 @@ repositories:
     version: 41be5d5e0651842e1c0bf2c2f8c403cacca285ed
   rosauth:
     type: git
-    url: https://github.com/GT-RAIL/rosauth.git
-    version: 8d2e768a824b66cc3bf8524a08a3f90d160b228c
+    url: https://github.com/esteve/rosauth.git
+    version: fix-openssl
