@@ -338,6 +338,9 @@ elseif(
 )
   set(_link_flags
     "\
+    -licudata \
+    -licui18n \
+    -licuuc \
     -lcrypto \
     -lz \
     "
