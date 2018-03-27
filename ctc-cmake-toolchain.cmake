@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.5)
 ## Based on Aldebaran's CTC toolchain
 ## Copyright (C) 2011-2014 Aldebaran
 
@@ -84,7 +85,9 @@ list(APPEND CMAKE_PREFIX_PATH ${ALDE_CTC_SYSROOT})
 if(NOT CMAKE_FIND_ROOT_PATH)
  set(CMAKE_FIND_ROOT_PATH)
 endif()
-list(INSERT CMAKE_FIND_ROOT_PATH 0  "${ALDE_CTC_SYSROOT}")
+if(NOT "${ALDE_CTC_SYSROOT}" IN_LIST CMAKE_FIND_ROOT_PATH)
+  list(INSERT CMAKE_FIND_ROOT_PATH 0  "${ALDE_CTC_SYSROOT}")
+endif()
 
 # search for programs in the build host directories
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM BOTH)
@@ -181,22 +184,25 @@ elseif("${TARGET_ARCH}" STREQUAL "arm")
   set(CMAKE_C_FLAGS="${CMAKE_C_FLAGS} -faggressive-loop-optimizations -ftree-vectorize -fpredictive-commoning")
 endif()
 
-set(_library_dirs
-  "\
-  -L${ALDE_CTC_CROSS}/boost/lib \
-  -L${ALDE_CTC_CROSS}/bzip2/lib \
-  -L${ALDE_CTC_CROSS}/icu/lib \
-  -L${ALDE_CTC_CROSS}/jpeg/lib \
-  -L${ALDE_CTC_CROSS}/png/lib \
-  -L${ALDE_CTC_CROSS}/tiff/lib \
-  -L${ALDE_CTC_CROSS}/zlib/lib \
-  -L${ALDE_CTC_CROSS}/xz_utils/lib \
-  -L${ALDE_CTC_CROSS}/openssl/lib \
-  "
-)
+if(NOT DEFINED ROS_PEPPER_LINK_DIRECTORIES)
+  set(ROS_PEPPER_LINK_DIRECTORIES
+    "\
+    -L${ALDE_CTC_CROSS}/boost/lib \
+    -L${ALDE_CTC_CROSS}/bzip2/lib \
+    -L${ALDE_CTC_CROSS}/icu/lib \
+    -L${ALDE_CTC_CROSS}/jpeg/lib \
+    -L${ALDE_CTC_CROSS}/png/lib \
+    -L${ALDE_CTC_CROSS}/tiff/lib \
+    -L${ALDE_CTC_CROSS}/zlib/lib \
+    -L${ALDE_CTC_CROSS}/xz_utils/lib \
+    -L${ALDE_CTC_CROSS}/openssl/lib \
+    "
+    CACHE INTERNAL ""
+  )
 
-set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} ${_library_dirs}" CACHE INTERNAL "")
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=gnu++11 ${_library_dirs}" CACHE INTERNAL "")
+  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} ${ROS_PEPPER_LINK_DIRECTORIES}" CACHE INTERNAL "")
+  set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=gnu++11 ${ROS_PEPPER_LINK_DIRECTORIES}" CACHE INTERNAL "")
+endif()
 
 ##
 # Make sure we don't have to relink binaries when we cross-compile
