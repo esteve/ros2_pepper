@@ -17,6 +17,7 @@ RUN apt-get install -y --no-install-recommends build-essential cmake git libssl-
 RUN apt-get install -y --no-install-recommends python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 RUN apt-get install -y --no-install-recommends python3-vcstool python3-empy
 RUN apt-get install -y --no-install-recommends automake pkg-config libtool
+RUN apt-get install -y --no-install-recommends ccache
 RUN useradd -ms /bin/bash nao
 WORKDIR /home/nao
 USER nao

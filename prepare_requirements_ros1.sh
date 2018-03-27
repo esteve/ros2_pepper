@@ -18,6 +18,7 @@ if [ ! -e "Python-${PYTHON2_VERSION}.tar.xz" ]; then
   tar xvf Python-${PYTHON2_VERSION}.tar.xz
 fi
 
+mkdir -p ccache-build/
 mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}
 
@@ -25,6 +26,7 @@ docker run -it --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
+  -v ${PWD}/ccache-build:/home/nao/.ccache \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
@@ -60,6 +62,7 @@ docker run -it --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
+  -v ${PWD}/ccache-build:/home/nao/.ccache \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \

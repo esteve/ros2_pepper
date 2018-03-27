@@ -19,6 +19,7 @@ if [ -z "$ALDE_CTC_CROSS" ]; then
   exit 1
 fi
 
+mkdir -p ccache-build/
 mkdir -p pepper_ros1_ws/cmake
 mkdir -p pepper_ros1_ws/src
 mkdir -p ${INSTALL_ROOT}/ros1_inst
@@ -35,6 +36,7 @@ docker run -it --rm \
   -e PYTHON2_MINOR_VERSION=${PYTHON2_MINOR_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \
+  -v ${PWD}/ccache-build:/home/nao/.ccache \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:ro \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host:ro \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}-pepper:ro \
