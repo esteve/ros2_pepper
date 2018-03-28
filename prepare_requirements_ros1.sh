@@ -64,6 +64,7 @@ docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -v ${PWD}/ccache-build:/home/nao/.ccache \
   -v ${PWD}/Python-${PYTHON2_VERSION}:/home/nao/Python-${PYTHON2_VERSION}-src \
+  -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
   ros1-pepper \
@@ -71,8 +72,8 @@ docker run -it --rm \
     set -euf -o pipefail && \
     mkdir -p Python-${PYTHON2_VERSION}-src/build-pepper && \
     cd Python-${PYTHON2_VERSION}-src/build-pepper && \
-    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
-    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:\${PATH} && \
+    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/Python-${PYTHON2_VERSION}-host/lib && \
+    export PATH=/home/nao/Python-${PYTHON2_VERSION}-host/bin:\${PATH} && \
     ../configure \
       --prefix=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION} \
       --host=i686-aldebaran-linux-gnu \
@@ -81,6 +82,9 @@ docker run -it --rm \
       --disable-ipv6 \
       ac_cv_file__dev_ptmx=yes \
       ac_cv_file__dev_ptc=no && \
-    make -j4 install && \
+    make -j4 && \
+    export LD_LIBRARY_PATH=/home/nao/ctc/openssl/lib:/home/nao/ctc/zlib/lib:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/lib && \
+    export PATH=/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin:\${PATH} && \
+    make install && \
     wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
     /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"

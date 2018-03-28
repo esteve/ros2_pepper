@@ -3,12 +3,7 @@ PYTHON2_MAJOR_VERSION=2
 PYTHON2_MINOR_VERSION=7
 PYTHON2_PATCH_VERSION=13
 
-PYTHON3_MAJOR_VERSION=3
-PYTHON3_MINOR_VERSION=6
-PYTHON3_PATCH_VERSION=1
-
 PYTHON2_VERSION=${PYTHON2_MAJOR_VERSION}.${PYTHON2_MINOR_VERSION}.${PYTHON2_PATCH_VERSION}
-PYTHON3_VERSION=${PYTHON3_MAJOR_VERSION}.${PYTHON3_MINOR_VERSION}.${PYTHON3_PATCH_VERSION}
 
 INSTALL_ROOT=.ros-root
 
@@ -34,15 +29,11 @@ docker run -it --rm \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
   -e PYTHON2_MINOR_VERSION=${PYTHON2_MINOR_VERSION} \
-  -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \
   -v ${PWD}/ccache-build:/home/nao/.ccache \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:ro \
   -v ${PWD}/Python-${PYTHON2_VERSION}-host:/home/nao/Python-${PYTHON2_VERSION}-host:ro \
   -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}-pepper:ro \
-  -v ${PWD}/Python-${PYTHON3_VERSION}-host:/home/nao/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}:ro \
-  -v ${PWD}/Python-${PYTHON3_VERSION}-host:/home/nao/Python-${PYTHON3_VERSION}-host:ro \
-  -v ${PWD}/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}:/home/nao/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}-pepper:ro \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc:ro \
   -v ${PWD}/${INSTALL_ROOT}/ros1_dependencies:/home/nao/${INSTALL_ROOT}/ros1_dependencies:ro \
   -v ${PWD}/${INSTALL_ROOT}/ros1_inst:/home/nao/${INSTALL_ROOT}/ros1_inst:rw \
