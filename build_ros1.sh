@@ -30,6 +30,7 @@ fi
 
 docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
+  -e CCACHE_DIR=/home/nao/.ccache \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \

@@ -37,6 +37,7 @@ fi
 
 docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
+  -e CCACHE_DIR=/home/nao/.ccache \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
