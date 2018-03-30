@@ -9,7 +9,6 @@ build: off
 environment:
   CTC_URL:
     secure: HW8cpWacR45yBwz29ACL8oSzpSkQnYeEmAjUOSrkYWTYUckBei63IdpnLGRYphs1P+1YOnNKVJeB8KhM7KldpwffeY54Kax7zhduaRy3T9IaLgwg6NvPBy4nAwuS/NhB7cbAS4ufOl78rNgBFo94Ig==
-  ALDE_CTC_CROSS: $APPVEYOR_BUILD_FOLDER/ctc-linux64-atom-2.5.2.74
 
 before_build:
   - wget -q -O ctc-linux64-atom-2.5.2.74.zip $CTC_URL
@@ -18,5 +17,6 @@ before_build:
 build_script:
   - pwd
   - ls -la
+  - export ALDE_CTC_CROSS=$APPVEYOR_BUILD_FOLDER/ctc-linux64-atom-2.5.2.74
   - echo "== $ALDE_CTC_CROSS =="
   # - ./prepare_requirements_ros1.sh
