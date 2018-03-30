@@ -17,3 +17,4 @@ before_build:
 build_script:
   - export ALDE_CTC_CROSS=$APPVEYOR_BUILD_FOLDER/ctc-linux64-atom-2.5.2.74
   - ./prepare_requirements_ros1.sh
+  - ./build_ros1_dependencies.sh
