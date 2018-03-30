@@ -23,7 +23,9 @@ mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}
 
 USE_TTY=""
-# test -t 1 && USE_TTY="-it"
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
 
 docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \

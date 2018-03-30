@@ -30,7 +30,12 @@ mkdir -p ${INSTALL_ROOT}/ros1_dependencies
 mkdir -p ros1_dependencies_sources/src
 cp repos/ros1_dependencies.repos ros1_dependencies_sources/
 
-docker run -it --rm \
+USE_TTY=""
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
+
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e ALDE_CTC_CROSS=/home/nao/ctc \

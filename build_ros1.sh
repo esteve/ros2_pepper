@@ -23,7 +23,12 @@ cp repos/pepper_ros1.repos pepper_ros1_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros1_ws/
 cp cmake/eigen3-config.cmake pepper_ros1_ws/cmake/
 
-docker run -it --rm \
+USE_TTY=""
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
+
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
