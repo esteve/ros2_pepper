@@ -15,8 +15,5 @@ before_build:
   - unzip -q ctc-linux64-atom-2.5.2.74.zip
 
 build_script:
-  - pwd
-  - ls -la
   - export ALDE_CTC_CROSS=$APPVEYOR_BUILD_FOLDER/ctc-linux64-atom-2.5.2.74
-  - echo "== $ALDE_CTC_CROSS =="
-  # - ./prepare_requirements_ros1.sh
+  - ./prepare_requirements_ros1.sh
