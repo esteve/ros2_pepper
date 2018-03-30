@@ -23,7 +23,7 @@ mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}
 
 USE_TTY=""
-test -t 1 && USE_TTY="-it"
+# test -t 1 && USE_TTY="-it"
 
 docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
