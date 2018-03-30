@@ -22,7 +22,12 @@ mkdir -p ccache-build/
 mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${PWD}/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}
 
-docker run -it --rm \
+USE_TTY=""
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
+
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
@@ -58,7 +63,7 @@ docker run -it --rm \
     wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/python && \
     /home/nao/${INSTALL_ROOT}/Python-${PYTHON2_VERSION}/bin/pip install empy catkin-pkg setuptools vcstool numpy rospkg defusedxml netifaces"
 
-docker run -it --rm \
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \

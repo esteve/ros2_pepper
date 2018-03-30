@@ -23,8 +23,15 @@ cp repos/pepper_ros1.repos pepper_ros1_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros1_ws/
 cp cmake/eigen3-config.cmake pepper_ros1_ws/cmake/
 
-docker run -it --rm \
+USE_TTY=""
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
+
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
+  -e HOME=/home/nao \
+  -e CCACHE_DIR=/home/nao/.ccache \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \

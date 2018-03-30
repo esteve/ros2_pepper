@@ -22,7 +22,12 @@ mkdir -p ccache-build/
 mkdir -p ${PWD}/Python-${PYTHON3_VERSION}-host
 mkdir -p ${PWD}/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}
 
-docker run -it --rm \
+USE_TTY=""
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
+
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
@@ -58,7 +63,7 @@ docker run -it --rm \
     wget -O - -q https://bootstrap.pypa.io/get-pip.py | /home/nao/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}/bin/python3 && \
     /home/nao/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}/bin/pip3 install empy catkin-pkg setuptools vcstool pyparsing"
 
-docker run -it --rm \
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \

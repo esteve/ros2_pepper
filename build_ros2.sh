@@ -30,8 +30,15 @@ cp repos/pepper_ament.repos pepper_ament_ws/
 cp repos/pepper_ros2.repos pepper_ros2_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros2_ws/
 
-docker run -it --rm \
+USE_TTY=""
+if [ -z "$ROS_PEPPER_CI" ]; then
+  USE_TTY="-it"
+fi
+
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
+  -e HOME=/home/nao \
+  -e CCACHE_DIR=/home/nao/.ccache \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -v ${ALDE_CTC_CROSS}:/home/nao/ctc \
@@ -53,7 +60,7 @@ docker run -it --rm \
         -DPYTHON_EXECUTABLE=/home/nao/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}/bin/python3 \
       --"
 
-docker run -it --rm \
+docker run ${USE_TTY} --rm \
   -u $(id -u $USER) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
