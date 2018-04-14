@@ -1,6 +1,6 @@
 #! /bin/bash
 
-HOST_INSTALL_ROOT="${PEPPER_ROS_BASE_ROOT:-${PWD}}/"System
+HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/"System
 
 # Check if ros has been cross-compilled
 if [ ! -d "${HOST_INSTALL_ROOT}" ]; then

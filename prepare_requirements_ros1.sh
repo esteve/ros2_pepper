@@ -4,7 +4,7 @@ set -euf -o pipefail
 
 PYTHON2_VERSION=2.7.13
 
-HOST_INSTALL_ROOT="${PEPPER_ROS_BASE_ROOT:-${PWD}}/"System
+HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/"System
 PEPPER_INSTALL_ROOT=System
 
 echo "Installing in ${HOST_INSTALL_ROOT}"
@@ -24,7 +24,6 @@ fi
 mkdir -p ccache-build/
 mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${HOST_INSTALL_ROOT}/Python-${PYTHON2_VERSION}
-
 
 USE_TTY=""
 if [ -z "$ROS_PEPPER_CI" ]; then
