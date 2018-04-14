@@ -25,7 +25,6 @@ mkdir -p ccache-build/
 mkdir -p ${PWD}/Python-${PYTHON2_VERSION}-host
 mkdir -p ${HOST_INSTALL_ROOT}/Python-${PYTHON2_VERSION}
 
-
 USE_TTY=""
 if [ -z "$ROS_PEPPER_CI" ]; then
   USE_TTY="-it"

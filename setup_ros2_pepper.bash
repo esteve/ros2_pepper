@@ -1,7 +1,6 @@
 #!/bin/bash
 
 HOST_INSTALL_ROOT="${PEPPER_ROS_BASE_ROOT:-${PWD}}/"System
-PEPPER_INSTALL_ROOT=System
 
 source /home/nao/${PEPPER_INSTALL_ROOT}/setup_ros1_pepper.bash
 

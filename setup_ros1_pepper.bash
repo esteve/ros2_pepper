@@ -1,7 +1,6 @@
 #!/bin/bash
 
 HOST_INSTALL_ROOT="${PEPPER_ROS_BASE_ROOT:-${PWD}}/"System
-PEPPER_INSTALL_ROOT=System
 
 export PYTHONHOME="/home/nao/${PEPPER_INSTALL_ROOT}/Python-2.7.13"
 export PATH="${PYTHONHOME}/bin:${PATH}"
