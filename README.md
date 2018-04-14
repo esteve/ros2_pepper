@@ -11,6 +11,12 @@ export AL_DIR=/home/NaoQi  <-- Or wherever you installed NaoQi
 export ALDE_CTC_CROSS=$AL_DIR/ctc-linux64-atom-2.5.2.74
 ```
 
+If you want to set the install directory (instead of the project root directory), set the `BASE_ROOT` environment variable:
+
+```
+export export BASE_ROOT=/home/mihome/pepper_root/  <-- Or wherever you want
+```
+
 ## Prepare cross-compiling environment
 
 We're going to use Docker to set up a container that will compile all the tools for cross-compiling ROS and all of its dependencies. Go to https://https://www.docker.com/community-edition to download it and install it for your Linux distribution.
