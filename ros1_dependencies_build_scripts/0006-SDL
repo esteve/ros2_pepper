@@ -5,7 +5,7 @@ cd /home/nao/ros1_dependencies_sources/src/SDL
 ./autogen.sh
 cd /home/nao/ros1_dependencies_sources/build/SDL
 ../../src/SDL/configure \
-  --prefix=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+  --prefix=/home/nao/${PEPPER_INSTALL_ROOT}/ros1_dependencies \
   --host=i686-aldebaran-linux-gnu \
   --build=x86_64-linux \
   --enable-shared
