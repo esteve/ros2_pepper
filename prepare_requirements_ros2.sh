@@ -28,7 +28,7 @@ if [ -z "$ROS_PEPPER_CI" ]; then
 fi
 
 docker run ${USE_TTY} --rm \
-  -u $(id -u $USER) \
+  -u $(id -u) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -v ${PWD}/ccache-build:/home/nao/.ccache \
@@ -64,7 +64,7 @@ docker run ${USE_TTY} --rm \
     /home/nao/${INSTALL_ROOT}/Python-${PYTHON3_VERSION}/bin/pip3 install empy catkin-pkg setuptools vcstool pyparsing"
 
 docker run ${USE_TTY} --rm \
-  -u $(id -u $USER) \
+  -u $(id -u) \
   -e INSTALL_ROOT=${INSTALL_ROOT} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -v ${PWD}/ccache-build:/home/nao/.ccache \

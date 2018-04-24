@@ -29,7 +29,7 @@ if [ -z "$ROS_PEPPER_CI" ]; then
 fi
 
 docker run ${USE_TTY} --rm \
-  -u $(id -u $USER) \
+  -u $(id -u) \
   -e HOME=/home/nao \
   -e CCACHE_DIR=/home/nao/.ccache \
   -e INSTALL_ROOT=${INSTALL_ROOT} \

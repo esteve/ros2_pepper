@@ -36,7 +36,7 @@ if [ -z "$ROS_PEPPER_CI" ]; then
 fi
 
 docker run ${USE_TTY} --rm \
-  -u $(id -u $USER) \
+  -u $(id -u) \
   -e HOME=/home/nao \
   -e CCACHE_DIR=/home/nao/.ccache \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
@@ -61,7 +61,7 @@ docker run ${USE_TTY} --rm \
       --"
 
 docker run ${USE_TTY} --rm \
-  -u $(id -u $USER) \
+  -u $(id -u) \
   -e PYTHON2_VERSION=${PYTHON2_VERSION} \
   -e PYTHON3_VERSION=${PYTHON3_VERSION} \
   -e PYTHON2_MAJOR_VERSION=${PYTHON2_MAJOR_VERSION} \
