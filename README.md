@@ -11,10 +11,10 @@ export AL_DIR=/home/NaoQi  <-- Or wherever you installed NaoQi
 export ALDE_CTC_CROSS=$AL_DIR/ctc-linux64-atom-2.5.2.74
 ```
 
-If you want to set the install directory (instead of the project root directory), set the `BASE_ROOT` environment variable:
+If you want to set the install directory (instead of the project root directory), set the `PEPPER_ROS_BASE_ROOT` environment variable:
 
 ```
-export export BASE_ROOT=/home/mihome/pepper_root/  <-- Or wherever you want
+export export PEPPER_ROS_BASE_ROOT=/home/mihome/pepper_root/  <-- Or wherever you want
 ```
 
 ## Prepare cross-compiling environment
@@ -63,17 +63,17 @@ Finally! Type the following, go grab a coffee and after a while you'll have an e
 
 ### Copy ROS and its dependencies to the robot
 
-By now you should have the following inside .ros-root in the current directory:
+By now you should have the following inside System in the current directory:
 
-- Python 2.7 built for Pepper (.ros-root/Python-2.7.13)
-- All the dependencies required by ROS (.ros-root/ros1_dependencies)
-- A ROS workspace with ROS Kinetic built for Pepper (.ros-root/ros1_inst)
-- A helper script that will set up the ROS workspace in the robot (.ros-root/setup_ros1_pepper.bash)
+- Python 2.7 built for Pepper (System/Python-2.7.13)
+- All the dependencies required by ROS (System/ros1_dependencies)
+- A ROS workspace with ROS Kinetic built for Pepper (System/ros1_inst)
+- A helper script that will set up the ROS workspace in the robot (System/setup_ros1_pepper.bash)
 
 We're going to copy these to the robot, assuming that your robot is connected to your network, type the following:
 
 ```
-$ scp -r .ros-root nao@IP_ADDRESS_OF_YOUR_ROBOT:.ros-root
+$ sync -avz System User nao@pepper.local:~/
 ```
 
 ### Run ROS 1 from inside Pepper
@@ -89,7 +89,7 @@ $ ssh nao@IP_ADDRESS_OF_YOUR_ROBOT
 *Source (not run) the setup script*
 
 ```
-$ source .ros-root/setup_ros1_pepper.bash
+$ source System/setup_ros1_pepper.bash
 ```
 
 *Start naoqi_driver, note that NETWORK\_INTERFACE may be either wlan0 or eth0, pick the appropriate interface if your robot is connected via wifi or ethernet*
@@ -123,15 +123,15 @@ Let's now build ROS 2 for Pepper:
 
 ### Copy ROS 2 and its dependencies to the robot
 
-Besides the ROS 1 binaries and its dependencies, we'll now a few more directories inside .ros-root in our current directory:
+Besides the ROS 1 binaries and its dependencies, we'll now a few more directories inside System in our current directory:
 
-- Python 3.6 built for Pepper (.ros-root/Python-3.6.1)
-- A ROS 2 workspace built for Pepper (.ros-root/ros2_inst)
+- Python 3.6 built for Pepper (System/Python-3.6.1)
+- A ROS 2 workspace built for Pepper (System/ros2_inst)
 
 We're going to copy these to the robot, assuming that your robot is connected to your network, type the following:
 
 ```
-$ scp -r .ros-root nao@IP_ADDRESS_OF_YOUR_ROBOT:.ros-root
+$ sync -avz System User nao@pepper.local:~/
 ```
 
 ### Run ROS 2 from inside Pepper
@@ -147,7 +147,7 @@ $ ssh nao@IP_ADDRESS_OF_YOUR_ROBOT
 *Source (not run) the setup script*
 
 ```
-$ source .ros-root/setup_ros2_pepper.bash
+$ source System/setup_ros2_pepper.bash
 ```
 
 ROS 2 does not have a something like roslaunch yet, so you'll have to run naoqi_driver directly:
