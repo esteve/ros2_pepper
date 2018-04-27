@@ -4,7 +4,7 @@ set -euf -o pipefail
 
 PYTHON2_VERSION=2.7.13
 
-HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/"System
+HOST_INSTALL_ROOT="${PEPPER_ROS_BASE_ROOT:-${PWD}}/"System
 PEPPER_INSTALL_ROOT=System
 
 echo "Installing in ${HOST_INSTALL_ROOT}"
