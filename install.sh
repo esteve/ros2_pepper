@@ -1,6 +1,6 @@
 #! /bin/bash
 
-HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/"System
+HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/System"
 PEPPER_INSTALL_ROOT=System
 
 # Check if ros has been cross-compilled
