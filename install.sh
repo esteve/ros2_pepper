@@ -1,6 +1,7 @@
 #! /bin/bash
 
 HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/"System
+PEPPER_INSTALL_ROOT=System
 
 # Check if ros has been cross-compilled
 if [ ! -d "${HOST_INSTALL_ROOT}" ]; then
@@ -31,9 +32,9 @@ if [ -z "$master_ip" ]; then
     master_ip=$local_ip
 fi
 # Set ROS Master URI to ip of which ros is installed (this most probably will te the ros master)
-copy_script="sed -i.bak 's/^\(export\s*ROS_MASTER_URI\s*=\s*\).*$/\http:\/\/$master_ip:11311/' System/setup_ros1_pepper.bash"
+copy_script="sed -i.bak 's/^\(export\s*ROS_MASTER_URI\s*=\s*\).*$/\http:\/\/$master_ip:11311/' ${PEPPER_INSTALL_ROOT}/setup_ros1_pepper.bash"
 echo 'if ssh public keys are not exchanged password will be asked twice'
-# Copy System folder to pepper home folder
+# Copy ${PEPPER_INSTALL_ROOT} folder to pepper home folder
 scp -r ${HOST_INSTALL_ROOT} nao@$hostname:'~'
 # execute install script inside pepper
 ssh nao@$hostname $copy_script
