@@ -4,7 +4,7 @@ HOST_INSTALL_ROOT="${BASE_ROOT:-${PWD}}/"System
 
 # Check if ros has been cross-compilled
 if [ ! -d "${HOST_INSTALL_ROOT}" ]; then
-    echo "ERROR: System directory is not found" 1>&2
+    echo "ERROR: System directory not found" 1>&2
     echo "ERROR: please build ros for pepper first" 1>&2
     exit 1
 fi
