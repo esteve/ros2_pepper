@@ -10,11 +10,11 @@ repositories:
   flann:
     type: git
     url: https://github.com/mariusmuja/flann.git
-    version: master
+    version: 033b05b1d100eb419256e92d59d7d7ea425046d3
   pcl:
     type: git
     url: https://github.com/PointCloudLibrary/pcl.git
-    version: master
+    version: f91d6b94bd554e56a01f280184129f5b55fbde3d
   poco:
     type: git
     url: https://github.com/pocoproject/poco.git
