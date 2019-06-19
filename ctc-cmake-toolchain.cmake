@@ -19,6 +19,7 @@ set(TARGET_ARCH "i686")
 set(TARGET_TUPLE "${TARGET_ARCH}-aldebaran-linux-gnu")
 
 set(ALDE_CTC_CROSS $ENV{ALDE_CTC_CROSS})
+set(CMAKE_Fortran_COMPILER "${ALDE_CTC_CROSS}/bin/${TARGET_TUPLE}-gfortran")
 
 
 if(" " STREQUAL "${ALDE_CTC_CROSS} ")
