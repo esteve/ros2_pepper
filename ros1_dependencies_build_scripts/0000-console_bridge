@@ -3,7 +3,7 @@ set -euf -o pipefail
 mkdir -p /home/nao/ros1_dependencies_sources/build/console_bridge
 cd /home/nao/ros1_dependencies_sources/build/console_bridge
 cmake \
-  -DCMAKE_INSTALL_PREFIX=/home/nao/${INSTALL_ROOT}/ros1_dependencies \
+  -DCMAKE_INSTALL_PREFIX=/home/nao/${PEPPER_INSTALL_ROOT}/ros1_dependencies \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_TOOLCHAIN_FILE=/home/nao/pepper_ros1_ws/ctc-cmake-toolchain.cmake \
   -DALDE_CTC_CROSS=/home/nao/ctc \
