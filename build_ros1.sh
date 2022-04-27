@@ -23,6 +23,7 @@ cp repos/pepper_ros1.repos pepper_ros1_ws/
 cp ctc-cmake-toolchain.cmake pepper_ros1_ws/
 cp cmake/eigen3-config.cmake pepper_ros1_ws/cmake/
 
+ROS_PEPPER_CI=${ROS_PEPPER_CI:=}
 USE_TTY=""
 if [ -z "$ROS_PEPPER_CI" ]; then
   USE_TTY="-it"
