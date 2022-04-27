@@ -14,7 +14,7 @@ export ALDE_CTC_CROSS=$AL_DIR/ctc-linux64-atom-2.5.2.74
 If you want to set the install directory (instead of the project root directory), set the `PEPPER_ROS_BASE_ROOT` environment variable:
 
 ```
-export PEPPER_ROS_BASE_ROOT=/home/mihome/pepper_root/  <-- Or wherever you want
+export PEPPER_ROS_BASE_ROOT=$HOME/pepper_root/  <-- Or wherever you want
 ```
 
 ## Prepare cross-compiling environment
@@ -73,7 +73,7 @@ By now you should have the following inside System in the current directory:
 We're going to copy these to the robot, assuming that your robot is connected to your network, type the following:
 
 ```
-$ sync -avz System User nao@pepper.local:~/
+$ rsync -avz System User nao@pepper.local:~/
 ```
 
 ### Run ROS 1 from inside Pepper
@@ -131,7 +131,7 @@ Besides the ROS 1 binaries and its dependencies, we'll now a few more directorie
 We're going to copy these to the robot, assuming that your robot is connected to your network, type the following:
 
 ```
-$ sync -avz System User nao@pepper.local:~/
+$ rsync -avz System User nao@pepper.local:~/
 ```
 
 ### Run ROS 2 from inside Pepper
